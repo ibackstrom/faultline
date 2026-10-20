@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent AI agent testing. We reproduce a failing workflow, check a proposed fix, and hand over a test your engineers can rerun.">
+  <meta name="theme-color" content="#f8f8f5">
+  <title>FAULTLINE | Reproduce the failure. Check the fix.</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="contact.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav wrap">
+    <a class="wordmark" href="#" aria-label="Faultline home"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 3h10l-3 10H3zm15 0h7v22H15l3-10h7M3 18h7v7H3"/></svg>FAULTLINE<span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="#work">Examples</a><a href="#process">How it works</a><a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Independent AI agent testing</p>
+        <h1 id="hero-title">Reproduce the bug.<br><span>Check the fix.</span></h1>
+        <p class="intro">We reproduce failures in AI workflows and check proposed fixes. You get a test your engineers can rerun, not another dashboard.</p>
+        <div class="hero-actions"><a class="button" href="#contact">Discuss your workflow <span aria-hidden="true">↗</span></a><a class="text-link" href="#work">See three examples <span aria-hidden="true">↓</span></a></div>
+        <p class="quiet hero-note">For AI integrators and agent engineering teams.<br>One workflow. Your existing tools.</p>
+      </div>
+      <figure class="trace-card" aria-labelledby="trace-title">
+        <figcaption class="trace-caption"><span class="mono">A LOCAL REPRODUCTION</span><span class="file-label">redirect_check</span></figcaption>
+        <div class="trace-heading"><h2 id="trace-title">One redirect.<br>Two different outcomes.</h2><span class="trace-symbol" aria-hidden="true">↳</span></div>
+        <div class="trace-run before">
+          <div class="run-label"><span class="mono">01 / ORIGINAL</span><span class="badge bad">Boundary missed</span></div>
+          <div class="graph" aria-label="Original: allowed request follows a redirect to a hostname outside the allowlist.">
+            <div class="node"><span class="node-icon" aria-hidden="true">↗</span><span>Allowed<br>request</span></div>
+            <div class="edge"><span>302 redirect</span><i aria-hidden="true"></i></div>
+            <div class="node result-node"><span class="node-icon" aria-hidden="true">!</span><span>Out-of-scope<br>host reached</span></div>
+          </div>
+        </div>
+        <div class="trace-run after">
+          <div class="run-label"><span class="mono">02 / WITH PROPOSED GUARD</span><span class="badge good">Request blocked</span></div>
+          <div class="graph" aria-label="With the isolated proposed guard: the same allowed request cannot send the redirect request outside the allowlist.">
+            <div class="node"><span class="node-icon" aria-hidden="true">↗</span><span>Same<br>request</span></div>
+            <div class="edge"><span>Scope checked</span><i aria-hidden="true"></i></div>
+            <div class="node result-node"><span class="node-icon" aria-hidden="true">✓</span><span>No request to<br>denied host</span></div>
+          </div>
+        </div>
+        <p class="trace-foot"><span class="small-dot" aria-hidden="true"></span> Real HTTP. Owned loopback fixture. Same input.</p>
+      </figure>
+    </section>
+    <div class="context-strip wrap"><span class="mono">WHAT YOU GET</span><p>A repeatable test. A fix check. Before/after evidence.</p></div>
+
+    <section id="work" class="section wrap" aria-labelledby="work-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / EXAMPLES</p><h2 id="work-title">Three bugs.<br>Checked corrections.</h2></div><p class="section-intro">Three defects in two local implementations. Each reproduced before a proposed correction and checked again after. These are component tests, not customer audits.</p></div>
+      <div class="case-grid">
+        <article class="case"><div class="case-top"><span class="mono">CASE 01</span><span class="case-glyph" aria-hidden="true">[↗]</span></div><h3>The URL check read<br>the wrong host.</h3><p>An allowlist accepted a URL whose real hostname wasn't allowed. The check had read part of the userinfo instead.</p><div class="case-outcome"><span class="before-label">Before</span><span>Denied host accepted</span><span class="after-label">After</span><span>Rejected by the parser fix</span></div><p class="case-limit">Component test. Allowed and denied controls kept working. No request to a third-party target.</p></article>
+        <article class="case"><div class="case-top"><span class="mono">CASE 02</span><span class="case-glyph" aria-hidden="true">↪</span></div><h3>The redirect skipped<br>the scope check.</h3><p>The first request passed the allowlist. Its redirect reached a hostname outside it. Our local server recorded both requests.</p><div class="case-outcome"><span class="before-label">Before</span><span>Denied host reached</span><span class="after-label">After</span><span>Redirect request blocked</span></div><p class="case-limit">Real HTTP component test. The allowed same-host redirect still worked with the isolated guard.</p></article>
+        <article class="case"><div class="case-top"><span class="mono">CASE 03</span><span class="case-glyph" aria-hidden="true">≠</span></div><h3>A normal page became<br>a “critical” finding.</h3><p>A detector saw an equals sign in an HTML fallback page and called it an exposed environment file. There was no env file.</p><div class="case-outcome"><span class="before-label">Before</span><span>False critical finding</span><span class="after-label">After</span><span>No env-file finding</span></div><p class="case-limit">A narrow content check, not proof of secrets. Env-format and 404 controls kept their expected results.</p></article>
+      </div>
+      <div class="proof-panel">
+        <div class="proof-copy"><p class="mono">THE HTTP RERUN</p><h3>Same seven checks.<br>Both errors removed.</h3><p>Five controls stayed correct. The two failing cases passed with the proposed corrections applied in isolation.</p><a class="text-link" href="evidence.json">Read the result data <span aria-hidden="true">↗</span></a></div>
+        <figure class="checks-chart" aria-labelledby="checks-title">
+          <figcaption id="checks-title" class="sr-only">Seven selected HTTP checks: original passes five, isolated corrections pass all seven. Original failures are the denied-host redirect and the HTML fallback detector.</figcaption>
+          <div class="chart-row"><div class="chart-label">Original <strong>5 / 7</strong></div><div class="check-cells" aria-label="Original results"><span class="check fail" title="Denied-host redirect: fail">×</span><span class="check pass" title="Same-host redirect: pass">✓</span><span class="check pass" title="Allowed request: pass">✓</span><span class="check pass" title="Denied request: pass">✓</span><span class="check fail" title="HTML fallback: fail">×</span><span class="check pass" title="Env-format control: pass">✓</span><span class="check pass" title="404 response: pass">✓</span></div></div>
+          <div class="chart-row"><div class="chart-label">With corrections <strong>7 / 7</strong></div><div class="check-cells" aria-label="All seven checks pass with isolated corrections"><span class="check pass">✓</span><span class="check pass">✓</span><span class="check pass">✓</span><span class="check pass">✓</span><span class="check pass">✓</span><span class="check pass">✓</span><span class="check pass">✓</span></div></div>
+          <p class="chart-note">Selected local component checks, not a production reliability score. No model was evaluated in this comparison. Original source checkouts were not changed.</p>
+        </figure>
+      </div>
+      <p class="evidence-note">Evidence recorded 20 October 2026. Implementations are anonymized; original source isn't redistributed. These checks don't establish an affected public release, a remote exploit, or a full agent-system fix. <a href="#contact">Ask for a walkthrough.</a></p>
+    </section>
+
+    <section id="process" class="process-section"><div class="wrap section">
+      <div class="section-heading"><div><p class="eyebrow">02 / HOW IT WORKS</p><h2>Bring one failure.<br>Keep the test.</h2></div><p class="section-intro">Start with a case that's hard to replay. We work with your existing tests and tools.</p></div>
+      <ol class="process-grid"><li><span class="step-number">01</span><h3>Reproduce it.</h3><p>Agree on what should happen. Replay the failure locally or in staging, using synthetic data.</p></li><li><span class="step-number">02</span><h3>Investigate the cause.</h3><p>Inspect the failing path. Simplify the case where possible and propose a correction when the evidence supports it.</p></li><li><span class="step-number">03</span><h3>Check the fix.</h3><p>Rerun the same case and controls. Hand over the test, commands and before/after results.</p></li></ol>
+    </div></section>
+
+    <section class="section wrap pilot-section" aria-labelledby="pilot-title">
+      <div><p class="eyebrow">03 / FIRST PROJECT</p><h2 id="pilot-title">One workflow.<br>One scoped pilot.</h2><p class="pilot-copy">We agree on the test, access and deliverables before starting. Begin with a short description. No credentials or private logs needed for the first conversation.</p></div>
+      <div class="pilot-card"><div class="pilot-price"><strong>€1,500</strong><span>starting pilot offer<br>before applicable taxes</span></div><p>One workflow. Up to five working days once access is ready. Maximum 15 engineering hours. Scope and model-call budget agreed first.</p><p class="quiet">A defect isn't guaranteed. If none reproduces within the agreed budget, you receive what was tested, the results and their limits.</p><a class="button button-wide" href="#contact">Discuss a pilot <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="faq wrap" aria-labelledby="questions-title"><h2 id="questions-title">A few useful boundaries.</h2>
+      <details><summary>Is this a software platform?</summary><p>No. It's an engineering service. We work with your tools and hand over tests and results. The examples above are local component investigations, not full customer-agent evaluations.</p></details>
+      <details><summary>Do we need to replace our eval tools?</summary><p>No. If Promptfoo, LangSmith, Braintrust or your own tests already solve the problem, there may be nothing for us to add. The useful job is the reproduction and fix check your current process still leaves to an engineer.</p></details>
+      <details><summary>What isn't included by default?</summary><p>Production writes, live third-party security testing, model training and access to private customer records. This isn't a security certification or a promise that the rest of the system is safe. New access, provider spend and testing scope need agreement first.</p></details>
+    </section>
+
+    <section id="contact" class="contact wrap"><div class="contact-heading"><p class="eyebrow">LET'S START WITH ONE CASE</p><h2>What went wrong?<br>What should have happened?</h2></div><div class="email-reveal" id="contact-address" aria-live="polite"><button class="button" id="reveal-contact" type="button">Show email address <span aria-hidden="true">↗</span></button></div><noscript><p class="quiet">Enable JavaScript to reveal the email address.</p></noscript><p class="quiet">Igor · No credentials or private logs, please.</p></section>
+  </main>
+  <footer class="footer wrap"><a class="wordmark footer-brand" href="#">FAULTLINE<span class="brand-dot">.</span></a><p>Independent testing. Checkable results.</p><p>No analytics scripts, forms or cookies added by this site.<br>Your email goes through your email provider.</p></footer>
+</body>
+</html>

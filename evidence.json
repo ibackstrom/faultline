@@ -1,0 +1,33 @@
+{
+  "recorded_date": "2026-10-20",
+  "scope": "Selected local implementation tests. Anonymized summary, not customer work or a production reliability score.",
+  "http_comparison": {
+    "kind": "Real HTTP on an owned loopback fixture; proposed corrections applied in isolation",
+    "checks": [
+      {"case": "Denied-host redirect", "original_pass": false, "corrected_pass": true},
+      {"case": "Same-host redirect", "original_pass": true, "corrected_pass": true},
+      {"case": "Direct allowed request", "original_pass": true, "corrected_pass": true},
+      {"case": "Direct denied request", "original_pass": true, "corrected_pass": true},
+      {"case": "HTML fallback is not an env file", "original_pass": false, "corrected_pass": true},
+      {"case": "Synthetic env-format positive control", "original_pass": true, "corrected_pass": true},
+      {"case": "404 negative control", "original_pass": true, "corrected_pass": true}
+    ],
+    "totals": {"checks": 7, "original_pass": 5, "corrected_pass": 7},
+    "model_calls": 0
+  },
+  "scope_parser_comparison": {
+    "kind": "Deterministic production-method checks; isolated proposed parser correction",
+    "verified_defects": 1,
+    "passing_controls": 2,
+    "other_reviewed_cases_not_claimed_as_defects": 2
+  },
+  "limits": [
+    "Three verified defects in two local implementations, not three independent customer audits.",
+    "No full agent-system or model E2E evaluation in these demonstrations.",
+    "Original source checkouts were not changed. Corrections were exercised only in isolation.",
+    "No affected public release, remote exploit or security certification established.",
+    "Source provenance and redistribution rights have not been established. This summary distributes no original source or raw report.",
+    "The env-content heuristic removes one false positive, not every false positive, and does not prove secret exposure.",
+    "The scope checks do not establish DNS-rebinding, IP/port policy or credential-isolation protection."
+  ]
+}

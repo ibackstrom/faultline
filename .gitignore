@@ -1,0 +1,6 @@
+# Publish only the landing page, never local credentials or research files.
+github.txt
+*.env
+.env
+.DS_Store
+public/
