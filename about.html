@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The person behind Faultline: Igor Backstrom, a working bug bounty hunter. Verified Hackrate record, paid AI-platform findings, and an honest field log.">
+  <meta name="description" content="The person behind Faultline: Igor Yakunin, a working bug bounty hunter. Verified Hackrate record and paid AI-platform findings.">
   <meta name="theme-color" content="#f8f8f5">
   <title>About | FAULTLINE</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -21,15 +21,15 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> About · who runs Faultline</p>
         <h1 id="about-title">A working bug<br><span>bounty hunter.</span></h1>
-        <p class="intro">I'm Igor Backstrom. I find security bugs on live platforms for a living: broken access control, authentication bypasses, exposed secrets. This year my targets moved to AI platforms. Faultline applies the same discipline to AI agents: reproduce the failure, check the fix, keep the test.</p>
-        <div class="hero-actions"><a class="button" href="#contact">Contact me <span aria-hidden="true">↗</span></a><a class="text-link" href="#record">See the field record <span aria-hidden="true">↓</span></a></div>
+        <p class="intro">I'm Igor Yakunin. I find security bugs on live platforms for a living: broken access control, authentication bypasses, exposed secrets. This year my targets moved to AI platforms. Faultline applies the same discipline to AI agents: reproduce the failure, check the fix, keep the test.</p>
+        <div class="hero-actions"><a class="button" href="#contact">Contact me <span aria-hidden="true">↗</span></a><a class="text-link" href="#record">See the record <span aria-hidden="true">↓</span></a></div>
       </div>
       <figure class="avatar-card">
-        <img src="ava.jpg" alt="Igor Backstrom" width="640" height="640">
+        <img src="ava.jpg" alt="Igor Yakunin" width="640" height="640">
         <figcaption class="avatar-meta">
-          <strong>Igor Backstrom</strong>
+          <strong>Igor Yakunin</strong>
           <div class="avatar-line"><span class="mono">HACKRATE · r1gor</span><span class="badge good">Verified</span></div>
-          <p class="quiet">Prague, Czech Republic · 7 months on the platform</p>
+          <p class="quiet">Prague, Czech Republic</p>
         </figcaption>
       </figure>
     </section>
@@ -38,13 +38,11 @@
       <span class="mono">THE RECORD</span>
       <div class="stat-row">
         <div class="stat"><strong>#12</strong><span>global rank</span></div>
-        <div class="stat"><strong>31</strong><span>reports</span></div>
-        <div class="stat"><strong>17</strong><span>accepted · 55%</span></div>
+        <div class="stat"><strong>17</strong><span>accepted</span></div>
         <div class="stat"><strong>5</strong><span>high-severity</span></div>
-        <div class="stat"><strong>€2,350</strong><span>bounty value</span></div>
       </div>
     </div>
-    <p class="about-note wrap">Numbers from my public Hackrate profile, 20 October 2026. The global rank updates daily. 10 programs tested over 6 active months.</p>
+    <p class="about-note wrap">Numbers from my public Hackrate profile, 20 October 2026. The global rank updates daily.</p>
 
     <section id="record" class="section wrap" aria-labelledby="focus-title">
       <div class="section-heading"><div><p class="eyebrow">01 / WHERE I HUNT</p><h2 id="focus-title">Where the bugs<br>come from.</h2></div><p class="section-intro">My accepted findings cluster in a few familiar places. Counts are the top weakness families from the profile.</p></div>
@@ -57,24 +55,13 @@
       </div>
     </section>
 
-    <section class="section wrap" aria-labelledby="log-title">
-      <div class="section-heading"><div><p class="eyebrow">02 / FIELD LOG</p><h2 id="log-title">Recent findings.<br>Exact statuses.</h2></div><p class="section-intro">A hunter's log includes duplicates and rejected reports. That's the job. Statuses copied from the profile, program names shortened.</p></div>
-      <ul class="log-list">
-        <li><span class="log-sev mono">HIGH</span><p>IDOR on cart endpoint: any account could read and rewrite other customers' carts.</p><div class="log-meta"><span class="who mono">FLINK</span><span class="badge neutral">Duplicate</span></div></li>
-        <li><span class="log-sev mono">MEDIUM</span><p>Order and rider feedback could be submitted for any order number and rider ID, without ownership checks.</p><div class="log-meta"><span class="who mono">FLINK</span><span class="badge good">Accepted</span></div></li>
-        <li><span class="log-sev mono">MEDIUM</span><p>Stored XSS in organization logo, SVG served as image/svg+xml.</p><div class="log-meta"><span class="who mono">COMBINOSTICS</span><span class="badge good">Resolved</span></div></li>
-        <li><span class="log-sev mono">LOW</span><p>reCAPTCHA secret key exposed in VIEWSTATE, no server-side verification.</p><div class="log-meta"><span class="who mono">WHITE PEAKS</span><span class="badge good">Accepted</span></div></li>
-        <li><span class="log-sev mono">MEDIUM</span><p>OpenAI API key exposed in client-side JavaScript.</p><div class="log-meta"><span class="who mono">WHITE PEAKS</span><span class="badge neutral">Not accepted (invalid)</span></div></li>
-      </ul>
-    </section>
-
     <section class="section wrap" aria-labelledby="ai-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / AI PLATFORMS</p><h2 id="ai-title">Last year, mostly<br>AI platforms.</h2></div><p class="section-intro">Four of my five paid programs in Q2 2026 were AI products. Amounts from my own bounty records.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">02 / AI PLATFORMS</p><h2 id="ai-title">Last year, mostly<br>AI platforms.</h2></div><p class="section-intro">Most of my paid findings last quarter were on AI products. Program names stay private. What each product does, and what I found there.</p></div>
       <ul class="paid-list">
-        <li><strong>$850</strong><span class="who">TextJam · AI editor</span><p>Document-content IDOR on /ai/edit.</p></li>
-        <li><strong>$750</strong><span class="who">juicebox.ai · AI recruiting</span><p>Cross-tenant account-takeover chain.</p></li>
-        <li><strong>$500</strong><span class="who">Everest · AI ERP</span><p>UI-model authorization bypass.</p></li>
-        <li><strong>$200</strong><span class="who">CM Insurance</span><p>Chatbot/OAuth issue.</p></li>
+        <li><span class="who">An AI code editor</span><p>Document-content IDOR in the editing flow.</p></li>
+        <li><span class="who">An AI recruiting platform</span><p>Cross-tenant account-takeover chain.</p></li>
+        <li><span class="who">An AI ERP suite</span><p>UI-model authorization bypass.</p></li>
+        <li><span class="who">An insurance chatbot</span><p>Chatbot and OAuth weakness.</p></li>
       </ul>
       <div class="also-filed">
         <p class="mono">ALSO FILED · ANTHROPIC</p>
@@ -83,7 +70,7 @@
     </section>
 
     <section class="section wrap" aria-labelledby="team-title">
-      <div class="section-heading"><div><p class="eyebrow">04 / THE TEAM</p><h2 id="team-title">Not a one-man show.</h2></div></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / THE TEAM</p><h2 id="team-title">Not a one-man show.</h2></div></div>
       <p class="team-copy">The other people on the team are professionals in their own fields. When you write to Faultline, you talk to me directly, and the work goes to whoever does it best.</p>
       <p class="about-note">Faultline is new. The testing method is built and verified locally, and the first paid agent audit is still ahead of us. The bounty record above is real, and it's the standard I hold the work to.</p>
     </section>
