@@ -9,6 +9,7 @@
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="contact.js" defer></script>
+  <script src="reveal.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -24,7 +25,7 @@
         <p class="intro">I'm Igor Yakunin. I find security bugs on live platforms for a living: broken access control, authentication bypasses, exposed secrets. This year my targets moved to AI platforms. Faultline applies the same discipline to AI agents: reproduce the failure, check the fix, keep the test.</p>
         <div class="hero-actions"><a class="button" href="#contact">Contact me <span aria-hidden="true">↗</span></a><a class="text-link" href="#record">See the record <span aria-hidden="true">↓</span></a></div>
       </div>
-      <figure class="avatar-card">
+      <figure class="avatar-card reveal">
         <img src="ava.jpg" alt="Igor Yakunin" width="640" height="640">
         <figcaption class="avatar-meta">
           <strong>Igor Yakunin</strong>
@@ -34,7 +35,7 @@
       </figure>
     </section>
 
-    <div class="about-stats wrap">
+    <div class="about-stats wrap reveal">
       <span class="mono">THE RECORD</span>
       <div class="stat-row">
         <div class="stat"><strong>#12</strong><span>global rank</span></div>
@@ -45,8 +46,8 @@
     <p class="about-note wrap">Numbers from my public Hackrate profile, 20 October 2026. The global rank updates daily.</p>
 
     <section id="record" class="section wrap" aria-labelledby="focus-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / WHERE I HUNT</p><h2 id="focus-title">Where the bugs<br>come from.</h2></div><p class="section-intro">My accepted findings cluster in a few familiar places. Counts are the top weakness families from the profile.</p></div>
-      <div class="chip-row">
+      <div class="section-heading reveal"><div><p class="eyebrow">01 / WHERE I HUNT</p><h2 id="focus-title">Where the bugs<br>come from.</h2></div><p class="section-intro">My accepted findings cluster in a few familiar places. Counts are the top weakness families from the profile.</p></div>
+      <div class="chip-row reveal">
         <span class="chip"><b>CWE-200</b>Data exposure · ×5</span>
         <span class="chip"><b>CWE-639</b>Object-level access · ×4</span>
         <span class="chip"><b>CWE-287</b>Authentication · ×3</span>
@@ -56,26 +57,26 @@
     </section>
 
     <section class="section wrap" aria-labelledby="ai-title">
-      <div class="section-heading"><div><p class="eyebrow">02 / AI PLATFORMS</p><h2 id="ai-title">Last year, mostly<br>AI platforms.</h2></div><p class="section-intro">Most of my paid findings last quarter were on AI products. Program names stay private. What each product does, and what I found there.</p></div>
-      <ul class="paid-list">
+      <div class="section-heading reveal"><div><p class="eyebrow">02 / AI PLATFORMS</p><h2 id="ai-title">Last year, mostly<br>AI platforms.</h2></div><p class="section-intro">Most of my paid findings last quarter were on AI products. Program names stay private. What each product does, and what I found there.</p></div>
+      <ul class="paid-list reveal">
         <li><span class="who">An AI code editor</span><p>Document-content IDOR in the editing flow.</p></li>
         <li><span class="who">An AI recruiting platform</span><p>Cross-tenant account-takeover chain.</p></li>
         <li><span class="who">An AI ERP suite</span><p>UI-model authorization bypass.</p></li>
         <li><span class="who">An insurance chatbot</span><p>Chatbot and OAuth weakness.</p></li>
       </ul>
-      <div class="also-filed">
+      <div class="also-filed reveal">
         <p class="mono">ALSO FILED · ANTHROPIC</p>
         <p>I've also filed reports against Anthropic: a Claude Code managed-policy bypass, an MCP approval flaw, and an MCP OAuth issue on api.anthropic.com. Some are still in triage or disputed, and one was a confirmed duplicate of a CVE already fixed upstream.</p>
       </div>
     </section>
 
     <section class="section wrap" aria-labelledby="team-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / THE TEAM</p><h2 id="team-title">Not a one-man show.</h2></div></div>
-      <p class="team-copy">The other people on the team are professionals in their own fields. When you write to Faultline, you talk to me directly, and the work goes to whoever does it best.</p>
+      <div class="section-heading reveal"><div><p class="eyebrow">03 / THE TEAM</p><h2 id="team-title">Not a one-man show.</h2></div></div>
+      <p class="team-copy reveal">The other people on the team are professionals in their own fields. When you write to Faultline, you talk to me directly, and the work goes to whoever does it best.</p>
       <p class="about-note">Faultline is new. The testing method is built and verified locally. The bounty record above is real, and it's the standard I hold the work to.</p>
     </section>
 
-    <section id="contact" class="contact wrap"><div class="contact-heading"><p class="eyebrow">LET'S START WITH ONE CASE</p><h2>What went wrong?<br>What should have happened?</h2></div><div class="email-reveal" id="contact-address" aria-live="polite"><button class="button" id="reveal-contact" type="button">Show email address <span aria-hidden="true">↗</span></button></div><noscript><p class="quiet">Enable JavaScript to reveal the email address.</p></noscript><p class="quiet">Igor · Prague, Czech Republic · No credentials or private logs, please.</p></section>
+    <section id="contact" class="contact wrap reveal"><div class="contact-heading"><p class="eyebrow">LET'S START WITH ONE CASE</p><h2>What went wrong?<br>What should have happened?</h2></div><div class="email-reveal" id="contact-address" aria-live="polite"><button class="button" id="reveal-contact" type="button">Show email address <span aria-hidden="true">↗</span></button></div><noscript><p class="quiet">Enable JavaScript to reveal the email address.</p></noscript><p class="quiet">Igor · Prague, Czech Republic · No credentials or private logs, please.</p></section>
   </main>
   <footer class="footer wrap"><a class="wordmark footer-brand" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><path fill="#18211f" d="M3 3h22v5.5H8.5v4.9H3z"/><path fill="#244cdc" d="M4.8 16.2H21.4V21H10.3V25H4.8z"/></svg>FAULTLINE<span class="brand-dot">.</span></a><p>Independent testing. Checkable results.<br>Prague, Czech Republic.</p><p>No analytics scripts, forms or cookies added by this site.<br>Your email goes through your email provider.</p></footer>
 </body>
