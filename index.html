@@ -13,7 +13,7 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav wrap">
-    <a class="wordmark" href="#" aria-label="Faultline home"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M3 3h10l-3 10H3zm15 0h7v22H15l3-10h7M3 18h7v7H3"/></svg>FAULTLINE<span class="brand-dot">.</span></a>
+    <a class="wordmark" href="#" aria-label="Faultline home"><svg viewBox="0 0 28 28" aria-hidden="true"><path fill="#18211f" d="M3 3h22v5.5H8.5v4.9H3z"/><path fill="#244cdc" d="M4.8 16.2H21.4V21H10.3V25H4.8z"/></svg>FAULTLINE<span class="brand-dot">.</span></a>
     <nav aria-label="Main navigation"><a href="#work">Examples</a><a href="#process">How it works</a><a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="main">
@@ -21,7 +21,7 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Independent AI agent testing</p>
         <h1 id="hero-title">Reproduce the bug.<br><span>Check the fix.</span></h1>
-        <p class="intro">When your AI agent does something once that it should never do, we turn it into a test your engineers can rerun on demand, and we check your fix actually fixes it.</p>
+        <p class="intro">Your AI agent did something it should never do. Just once. We turn that one failure into a test your engineers can rerun on demand, and we check your fix actually fixes it.</p>
         <div class="hero-actions"><a class="button" href="#contact">Tell us what broke <span aria-hidden="true">↗</span></a><a class="text-link" href="#work">See three examples <span aria-hidden="true">↓</span></a></div>
         <p class="quiet hero-note">For teams that ship AI agents and LLM features.<br>One workflow. Your existing tools.</p>
       </div>
@@ -37,8 +37,8 @@
           </div>
         </div>
         <div class="trace-run after">
-          <div class="run-label"><span class="mono">02 / WITH PROPOSED GUARD</span><span class="badge good">Request blocked</span></div>
-          <div class="graph" aria-label="With the isolated proposed guard: the same allowed request cannot send the redirect request outside the allowlist.">
+          <div class="run-label"><span class="mono">02 / WITH THE FIX</span><span class="badge good">Request blocked</span></div>
+          <div class="graph" aria-label="With the fix applied in isolation: the same allowed request cannot follow the redirect to a hostname outside the allowlist.">
             <div class="node"><span class="node-icon" aria-hidden="true">↗</span><span>Same<br>request</span></div>
             <div class="edge"><span>Scope checked</span><i aria-hidden="true"></i></div>
             <div class="node result-node"><span class="node-icon" aria-hidden="true">✓</span><span>No request to<br>denied host</span></div>
@@ -70,7 +70,7 @@
 
     <section id="process" class="process-section"><div class="wrap section">
       <div class="section-heading"><div><p class="eyebrow">02 / HOW IT WORKS</p><h2>Bring one failure.<br>Keep the test.</h2></div><p class="section-intro">Start with a case that's hard to replay. We work with your existing tests and tools.</p></div>
-      <ol class="process-grid"><li><span class="step-number">01</span><h3>Reproduce it.</h3><p>Agree on what should happen. Replay the failure locally or in staging, using synthetic data.</p></li><li><span class="step-number">02</span><h3>Find the cause.</h3><p>We cut the failure down to the smallest input that still fails, then trace the failing path. A small case shows the real cause, not noise. We propose a fix when the evidence supports one.</p></li><li><span class="step-number">03</span><h3>Check the fix.</h3><p>Rerun the same case and controls. Hand over the test, commands and before/after results.</p></li></ol>
+      <ol class="process-grid"><li><span class="step-number">01</span><h3>Reproduce it.</h3><p>Agree on what should happen. Replay the failure locally or in staging, using synthetic data.</p></li><li><span class="step-number">02</span><h3>Find the cause.</h3><p>We cut the failure down to the smallest input that still fails, then trace the failing path. A small case shows the real cause, not noise. We propose a fix when the evidence supports one.</p><p>In one recorded run, a failing 8-step chain shrank to 2 steps in 33 model calls.</p></li><li><span class="step-number">03</span><h3>Check the fix.</h3><p>Rerun the same case and controls. Hand over the test, commands and before/after results.</p></li></ol>
     </div></section>
 
     <section class="section wrap pilot-section" aria-labelledby="pilot-title">
@@ -87,6 +87,6 @@
 
     <section id="contact" class="contact wrap"><div class="contact-heading"><p class="eyebrow">LET'S START WITH ONE CASE</p><h2>What went wrong?<br>What should have happened?</h2></div><div class="email-reveal" id="contact-address" aria-live="polite"><button class="button" id="reveal-contact" type="button">Show email address <span aria-hidden="true">↗</span></button></div><noscript><p class="quiet">Enable JavaScript to reveal the email address.</p></noscript><p class="quiet">Igor · Prague, Czech Republic · No credentials or private logs, please.</p></section>
   </main>
-  <footer class="footer wrap"><a class="wordmark footer-brand" href="#">FAULTLINE<span class="brand-dot">.</span></a><p>Independent testing. Checkable results.<br>Prague, Czech Republic.</p><p>No analytics scripts, forms or cookies added by this site.<br>Your email goes through your email provider.</p></footer>
+  <footer class="footer wrap"><a class="wordmark footer-brand" href="#"><svg viewBox="0 0 28 28" aria-hidden="true"><path fill="#18211f" d="M3 3h22v5.5H8.5v4.9H3z"/><path fill="#244cdc" d="M4.8 16.2H21.4V21H10.3V25H4.8z"/></svg>FAULTLINE<span class="brand-dot">.</span></a><p>Independent testing. Checkable results.<br>Prague, Czech Republic.</p><p>No analytics scripts, forms or cookies added by this site.<br>Your email goes through your email provider.</p></footer>
 </body>
 </html>
