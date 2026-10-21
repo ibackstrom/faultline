@@ -1,0 +1,21 @@
+{
+  "stage": "independent-local-pipeline-verification",
+  "issue": "https://github.com/pipecat-ai/pipecat/issues/6201",
+  "patch": "https://github.com/pipecat-ai/pipecat/pull/6232",
+  "revisions": {"base": "844dad94866ce589f1e4862eff09dc4f38c3d844", "patch": "24c3053c4fe5c02822371394acd6450ebe4de8c9"},
+  "repeats": 3,
+  "model_calls": 0,
+  "sampling": {"temperature": null, "seed": null, "context_budget": null, "output_budget": null, "thinking": null, "reason": "Scripted LLMService; no model inference or model judge."},
+  "rules": "Each fresh process uses the real Pipecat pipeline, aggregators, turn controller, mute strategy and function dispatch. Only speech events, model decisions and tool data are synthetic. A completed answer must reach the output before teardown, with exactly one tool call and exactly two inference requests. Framework errors and wrong event ordering are errors, not silence findings. Repeats are consistency checks, not independent production samples.",
+  "timing": {"initial_speech_stop": 0.1, "speech_timeout": 0.2, "model_delay": 0.5, "watchdog": 1.0, "observation_end": 5.0},
+  "cases": [
+    {"id": "reported", "label": "Reported resume-before-tool sequence", "speech": [[0.5, "start"], [1.0, "stop"]], "tool_delay": 0.3, "mute": true, "tool_error": false, "order": "during_tool"},
+    {"id": "silent-control", "label": "No resumed speech", "speech": [], "tool_delay": 0.3, "mute": true, "tool_error": false, "order": "none"},
+    {"id": "stop-before-tool", "label": "Resumed speech stops before tool commitment", "speech": [[0.5, "start"], [0.65, "stop"]], "tool_delay": 0.3, "mute": true, "tool_error": false, "order": "before_tool"},
+    {"id": "stop-after-result", "label": "Resumed speech stops after tool result", "speech": [[0.5, "start"], [1.6, "stop"]], "tool_delay": 0.3, "mute": true, "tool_error": false, "order": "after_result"},
+    {"id": "no-mute", "label": "Reported timing without function-call mute", "speech": [[0.5, "start"], [1.0, "stop"]], "tool_delay": 0.3, "mute": false, "tool_error": false, "order": "during_tool"},
+    {"id": "slow-tool", "label": "Tool result takes longer than the watchdog", "speech": [[0.5, "start"], [1.0, "stop"]], "tool_delay": 1.5, "mute": true, "tool_error": false, "order": "during_tool"},
+    {"id": "error-result", "label": "Tool returns a handled application error", "speech": [[0.5, "start"], [1.0, "stop"]], "tool_delay": 0.3, "mute": true, "tool_error": true, "order": "during_tool"},
+    {"id": "two-speech-bursts", "label": "Second speech burst while tool is active", "speech": [[0.5, "start"], [1.0, "stop"], [1.15, "start"], [1.35, "stop"]], "tool_delay": 1.0, "mute": true, "tool_error": false, "order": "during_tool"}
+  ]
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="We replayed a reported Pipecat silence bug and checked the proposed fix across eight event sequences. Runnable evidence, controls and limits.">
+  <title>The tool returned. The agent stayed silent. | FAULTLINE</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .story{max-width:900px;padding-block:58px 65px}.story h1{max-width:850px}.story .lead{font-size:21px;line-height:1.6;color:var(--muted);margin:25px 0}.story p{margin:17px 0}.story h2{font-size:30px;letter-spacing:-.8px;margin:42px 0 16px}.story code{font:12px/1.6 var(--mono);overflow-wrap:anywhere}.byline{font-size:12px;color:var(--muted)}.scoreboard{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:30px}.scoreboard>div{padding:24px;background:#fff}.scoreboard>div+div{border-left:1px solid var(--line)}.scoreboard strong{display:block;font-size:43px;line-height:1.3;letter-spacing:-2px}.scoreboard .before{color:var(--red)}.scoreboard .after{color:var(--green)}.scoreboard p{font-size:12px;margin:8px 0 0;color:var(--muted)}.story .scope{font-size:13px;color:var(--muted);border-left:3px solid var(--blue);padding-left:17px}.story table{width:100%;border-collapse:collapse;font-size:13px}.story td,.story th{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}.story td:not(:first-child),.story th:not(:first-child){text-align:right;white-space:nowrap}.story th{font-weight:600}.story pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef0e9;border:1px solid var(--line);padding:17px;font:11px/1.8 var(--mono);border-radius:5px}.traces{display:grid;grid-template-columns:1fr 1fr;gap:16px}.trace-title{font-size:12px;font-weight:600}.story li{margin-block:9px}.story .downloads{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0}.story .offer{border-top:3px solid var(--blue);margin-top:45px;padding-top:8px}.offer h2{margin-top:20px}.story a{overflow-wrap:anywhere}@media(max-width:560px){.story{padding-top:34px}.story h1{font-size:42px}.story .lead{font-size:17px}.scoreboard>div{padding:17px}.scoreboard strong{font-size:36px}.story h2{font-size:26px}.story table{font-size:11px}.story td,.story th{padding:11px 4px}.traces{grid-template-columns:1fr}.story pre{font-size:11px}.byline{font-size:11px}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav wrap"><a class="wordmark" href="index.html"><img src="logo.svg" width="28" height="28" alt="">FAULTLINE<span class="brand-dot">.</span></a><nav aria-label="Main navigation"><a href="index.html#work">Examples</a><a href="about.html">About</a><a href="index.html#contact">Contact ↗</a></nav></header>
+  <main id="main" class="story wrap">
+    <p class="eyebrow">Engineering note / Pipecat / 21 October 2026</p>
+    <h1>The tool returned.<br><span>The agent stayed silent.</span></h1>
+    <p class="lead">A successful tool call isn't the end of a voice-agent test. We replayed a reported Pipecat failure where the result arrives, but the next answer never starts within our observation window. Then we checked the proposed fix.</p>
+    <p class="byline">FAULTLINE · Independent local verification · Synthetic speech and scripted responses</p>
+    <div class="scoreboard" aria-label="Selected checks passed on each revision">
+      <div><span class="mono">ORIGINAL</span><strong class="before">6 / 24</strong><p>checks passed; 18 produced no answer</p></div>
+      <div><span class="mono">PROPOSED PATCH</span><strong class="after">24 / 24</strong><p>checks passed; controls still worked</p></div>
+    </div>
+    <p class="scope">Eight selected sequences, three fresh-process repeats per revision. These are consistency checks, not independent samples or a production failure-rate estimate. No real model or telephone call was used.</p>
+    <p>The original report is <a href="https://github.com/pipecat-ai/pipecat/issues/6201">Shehroze Talat's issue #6201</a>. The correction is <a href="https://github.com/pipecat-ai/pipecat/pull/6232">Cross2pro's PR #6232</a>, open when checked on 21 October. We didn't discover the original bug or write that patch. Our contribution is the independent replay, nearby cases and recorded output.</p>
+
+    <h2>The narrow timing window</h2>
+    <p>The setup combines <code>FilterIncompleteUserTurnStrategies</code> with <code>FunctionCallUserMuteStrategy</code>. Inference starts while the logical user turn is still open. The user starts speaking again before the model commits to its tool call.</p>
+    <ol>
+      <li>Start inference after the first speech segment ends.</li>
+      <li>Resume speech while that inference is still running.</li>
+      <li>Start the tool, then send the speech-stop event while input is muted.</li>
+      <li>Return the tool result. Watch for actual answer text, not just a completed tool.</li>
+    </ol>
+    <p>On the original revision, the muted stop event leaves speaking state stuck. The result reaches the conversation context, but the next inference is held. The watchdog doesn't rescue this sequence.</p>
+    <p>The patch keeps voice-activity state synchronized during mute and releases the held context when the user turn closes. Both parts matter: our no-mute and stop-after-result cases closed the turn on the original code, yet still produced no answer.</p>
+
+    <h2>What the replay actually recorded</h2>
+    <p>We used the real pipeline, aggregators, turn controller and function dispatch. Only speech events, model decisions and availability data were scripted. A pass requires the expected pre-TTS text, exactly one tool call, exactly two inference requests and a closed turn before teardown.</p>
+    <details open><summary>Reported sequence, repeat 1: failed original and passing patch</summary>
+      <p>Elapsed seconds from each probe's start. This view is generated from the saved result JSON, not a reconstructed transcript.</p>
+      <div class="traces"><div><p class="trace-title">Original · no answer</p><pre id="base-trace">Loading recorded events…</pre></div><div><p class="trace-title">Proposed patch · answer emitted</p><pre id="patch-trace">Loading recorded events…</pre></div></div>
+      <noscript><p><a href="pipecat-6201/run/results.json">Read the saved events without JavaScript.</a></p></noscript>
+    </details>
+    <p>Recovery isn't necessarily immediate. In the reported sequence, the patched pipeline waits for the watchdog. This check doesn't show that interrupted words are recovered or that stale inference is cancelled.</p>
+    <table><caption class="sr-only">Passes out of three repeats for each selected sequence</caption><thead><tr><th scope="col">Sequence</th><th scope="col">Original</th><th scope="col">Patch</th></tr></thead><tbody>
+      <tr><td>Reported resume-before-tool timing</td><td>0 / 3</td><td>3 / 3</td></tr>
+      <tr><td>No resumed speech</td><td>3 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Speech stops before tool commitment</td><td>3 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Speech stops after the tool result</td><td>0 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Function-call mute disabled</td><td>0 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Tool slower than the watchdog</td><td>0 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Handled application-error result</td><td>0 / 3</td><td>3 / 3</td></tr>
+      <tr><td>Two resumed speech bursts</td><td>0 / 3</td><td>3 / 3</td></tr>
+    </tbody></table>
+    <p class="quiet">Five-second observation per trial. No framework ErrorFrames, process failures or invalid event orders in the final run. No pending asyncio tasks after cleanup. A handled tool error is a test input, not a failed test command.</p>
+
+    <h2>The controls caught our mistake too</h2>
+    <p>Our first recorder sat after an aggregator that consumes text. It called even the ordinary control silent. We discarded those classifications, moved the recorder before the assistant aggregator and repeated the full matrix. A final run explicitly initialized the scripted service's unsupported settings to remove a startup diagnostic. The cases stayed unchanged.</p>
+    <p>Four upstream test files also passed: 191 tests on the base and 194 on the patch. Those suites support the check; they don't turn it into a live-call test.</p>
+
+    <h2>Run it, then test your own call flow</h2>
+    <p>The package includes the frozen cases, probe, all 48 final traces, source hashes, environment and reproduction commands. It pins <a href="https://github.com/pipecat-ai/pipecat/commit/844dad94866ce589f1e4862eff09dc4f38c3d844">the base revision</a> and <a href="https://github.com/pipecat-ai/pipecat/commit/24c3053c4fe5c02822371394acd6450ebe4de8c9">the proposed patch</a>. No customer data is included.</p>
+    <div class="downloads"><a class="button" href="pipecat-6201-evidence.zip">Download runnable evidence ↓</a><a class="button" href="faultline-voice-verification.pdf">Two-page overview ↓</a></div>
+    <p><a href="https://github.com/ibackstrom/faultline/tree/main/pipecat-6201">Read the reproduction instructions on GitHub ↗</a></p>
+    <p>We haven't tested STT, TTS, SIP, provider latency, disconnects or customer deployments. Speech is synthetic, and the answer is scripted. Don't treat this as evidence about model reasoning or every Pipecat configuration.</p>
+    <div class="offer"><h2>A useful handover has a test attached.</h2><p>That's the work FAULTLINE offers: take one difficult agent failure, reproduce it if possible, check the correction and leave a test your engineers can rerun. For a voice agency, the starting point is one agreed call flow before a client handover.</p><p><a href="index.html#contact">Discuss one workflow with Igor ↗</a></p></div>
+  </main>
+  <footer class="footer wrap"><a class="wordmark" href="index.html">FAULTLINE<span class="brand-dot">.</span></a><p>Independent testing. Checkable results.<br>Prague, Czech Republic.</p></footer>
+  <script>
+    fetch('pipecat-6201/run/results.json').then(response => {
+      if (!response.ok) throw new Error('Evidence could not be loaded');
+      return response.json();
+    }).then(records => {
+      for (const revision of ['base', 'patch']) {
+        const trial = records.find(r => r.revision === revision && r.case === 'reported' && r.repeat === 1);
+        const kinds = ['inference', 'tool_started', 'tool_result', 'watchdog', 'output_text'];
+        const lines = trial.events.filter(e => kinds.includes(e.kind)).map(e => `${e.t.toFixed(3)}  ${e.kind}${e.text ? '\n       ' + e.text : ''}`);
+        lines.push('', 'Answer: ' + JSON.stringify(trial.output_text), 'Turn open: ' + trial.snapshot_before_teardown.user_turn_open, 'Result: ' + trial.status);
+        document.getElementById(revision + '-trace').textContent = lines.join('\n');
+      }
+    }).catch(() => {
+      for (const revision of ['base', 'patch']) document.getElementById(revision + '-trace').textContent = 'Evidence unavailable here. Download the package to inspect the saved traces.';
+    });
+  </script>
+</body>
+</html>

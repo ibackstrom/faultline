@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.9, pytest-9.1.1, pluggy-1.6.0
+rootdir: [LOCAL_WORKSPACE]/.amp/in/pipecat-6201-src
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, aiohttp-1.1.1, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 194 items
+
+../.amp/in/pipecat-6201-src/tests/test_context_aggregators_universal.py . [  0%]
+........................................................................ [ 37%]
+...............................................                          [ 61%]
+../.amp/in/pipecat-6201-src/tests/test_user_turn_controller.py ......... [ 66%]
+......................                                                   [ 77%]
+../.amp/in/pipecat-6201-src/tests/test_user_mute_strategy.py .........   [ 82%]
+../.amp/in/pipecat-6201-src/tests/test_user_turn_completion_mixin.py ... [ 84%]
+...............................                                          [100%]
+
+=============================== warnings summary ===============================
+tests/test_context_aggregators_universal.py::TestLLMUserAggregator::test_filter_incomplete_user_turns_installs_strategy
+  <string>:13: DeprecationWarning: `LLMUserAggregatorParams.filter_incomplete_user_turns` is deprecated since 1.2.0 and will be removed in 2.0.0. Use `user_turn_strategies=FilterIncompleteUserTurnStrategies()` instead.
+
+tests/test_context_aggregators_universal.py: 41 warnings
+tests/test_user_turn_controller.py: 2 warnings
+  [LOCAL_WORKSPACE]/.amp/in/pipecat-6201-src/src/pipecat/audio/turn/smart_turn/local_smart_turn_v3.py:61: DeprecationWarning: path is deprecated. Use files() instead. Refer to https://importlib-resources.readthedocs.io/en/latest/using.html#migrating-from-legacy for migration advice.
+    with impresources.path(package_path, model_name) as f:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 194 passed, 44 warnings in 36.30s =======================

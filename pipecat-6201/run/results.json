@@ -1,0 +1,4406 @@
+[
+  {
+    "case": "reported",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.237333,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.338435,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.540469,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.740512,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.041888,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.044422,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.241028,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.344784,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.242159,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "reported",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.175072,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.276166,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.478202,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.677515,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.978882,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.980306,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.178721,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.281488,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.18091,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "reported",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.201052,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.302181,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.505095,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.703149,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.006377,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.009549,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.204436,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.310707,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.20532,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.17432,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.275474,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.477358,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.978607,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.980126,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.281265,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.282566,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.28302,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.176364,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.75,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.171904,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.27307,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.476279,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.977385,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.978666,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.27928,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.287426,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.290711,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.178195,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 11.43,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.177639,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.278601,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.482815,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.984325,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.985559,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.286784,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.290336,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.291573,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.183523,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 4.79,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.174814,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.275934,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.478302,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.677297,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.828466,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.979548,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.980852,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.282088,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.28421,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.284957,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.179881,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 2.87,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.15617,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.257023,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.464365,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.658251,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.808833,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.964968,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.9671,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.268014,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.270318,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.271406,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.161462,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 3.39,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.17006,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.271203,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.474238,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.673183,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.823112,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.975457,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.97643,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.277539,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.278402,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.278756,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.174846,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.22,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "stop-after-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.163797,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.264904,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.473248,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.666275,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.974196,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.975949,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.277917,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.768011,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.972833,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.169507,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "stop-after-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.151739,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.252888,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.45542,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.655137,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.95707,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.961398,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.262612,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.756095,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.961189,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.157066,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "stop-after-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.163454,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.264519,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.470219,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.667005,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.970698,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.972012,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.273148,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.767787,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.972701,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.169285,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "no-mute",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.180888,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.282366,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.485263,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.683619,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.986781,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.989618,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.184453,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.290845,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.390007,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.186064,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "no-mute",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.189477,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.290713,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.493912,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.691699,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.994442,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.995634,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.192241,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.2968,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.39555,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.194875,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "no-mute",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.164848,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.265967,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.468251,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.667602,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.969606,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.971528,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.168861,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.271704,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.373631,
+        "kind": "watchdog"
+      },
+      {
+        "t": 5.170077,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "slow-tool",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.250893,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.351935,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.555959,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.754282,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.057653,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.059965,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.255311,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.561918,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.255799,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "slow-tool",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.158876,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.260028,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.464337,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.663283,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.966888,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.970057,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.163713,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.470705,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.164646,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "slow-tool",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.175918,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.277068,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.479085,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.678175,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.980285,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.981239,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.179622,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.48231,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.180668,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "error-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.16728,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.268364,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.47052,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.669499,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.971673,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.97235,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.170861,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.273443,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.172291,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "error-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.166258,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.267362,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.469292,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.668561,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.970529,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.971819,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.169864,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.27295,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.171014,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "error-result",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.162944,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.264092,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.466061,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.665555,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.966245,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.967355,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.166526,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.268531,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.16768,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.165433,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.266561,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.468695,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.66774,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.96987,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.9707,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.169798,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.320649,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.520733,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.972145,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.171855,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 1
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.162411,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.262992,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.465159,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.66464,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.966313,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.967137,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.165507,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.316624,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.518043,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.968341,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.169212,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 2
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "fail",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "",
+    "snapshot_before_teardown": {
+      "inferences": 1,
+      "tool_calls": 1,
+      "user_turn_open": true,
+      "controller_speaking": true,
+      "assistant_speaking_state": true,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.171715,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.272848,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.474625,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.673945,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.975738,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.976263,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.175021,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.325519,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.52674,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.977352,
+        "kind": "tool_result"
+      },
+      {
+        "t": 5.177847,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": null,
+    "revision": "base",
+    "repeat": 3
+  },
+  {
+    "case": "reported",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.165617,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.265938,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.467961,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.667068,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.969257,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.97021,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.168569,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.271312,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.170996,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.172148,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.172873,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.169762,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 901.56,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "reported",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.165003,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.266054,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.467997,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.666476,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.96915,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.969991,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.167692,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.271088,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.169685,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.170704,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.171436,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.169,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 900.35,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "reported",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.166115,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.267212,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.468952,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.668442,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.970137,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.971073,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.169776,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.271433,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.171363,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.171908,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.172351,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.170746,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 900.92,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.160676,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.261769,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.463456,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.964592,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.965459,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.266541,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.26734,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.267669,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.163319,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.13,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.163827,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.264628,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.466358,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.967483,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.968312,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.269407,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.270245,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.270582,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.16793,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.18,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "silent-control",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.197128,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.298241,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.499821,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 1.001025,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.002687,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.303802,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.304888,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.305358,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.19972,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.56,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.174548,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.275683,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.486554,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.677552,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.828712,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.988088,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.99007,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.291318,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.295488,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.296956,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.183076,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 5.64,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.225216,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.326306,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.528171,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.727566,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.878601,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.029341,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.030676,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.331451,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.333755,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.334637,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.229816,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 3.19,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "stop-before-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.164973,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.266136,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.470492,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.667964,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.820963,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.971805,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.97326,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.274699,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.279511,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 1.28075,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.173035,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 6.05,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "stop-after-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.18012,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.281368,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.485077,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.682783,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.985645,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.986259,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.287559,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.783483,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.989232,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.992279,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.993379,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.184147,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1705.82,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "stop-after-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.200436,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.301669,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.504445,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.703649,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.00879,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.010436,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.312597,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.805263,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 3.008854,
+        "kind": "watchdog"
+      },
+      {
+        "t": 3.009431,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 3.009933,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.205601,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1697.34,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "stop-after-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.165191,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.266264,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.468411,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.667774,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.969582,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.970546,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.271652,
+        "kind": "tool_result"
+      },
+      {
+        "t": 1.768981,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.972389,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.973047,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.973641,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.169286,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1701.99,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "no-mute",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.17499,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.276121,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.478518,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.682198,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.980014,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.981838,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.181777,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.283312,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.386754,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.388745,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.390774,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.182748,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1107.46,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "no-mute",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.192167,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.293148,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.495595,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.694536,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.998823,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.001424,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.196051,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.3047,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.399635,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.400103,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.400573,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.198383,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1095.87,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "no-mute",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.166876,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.267982,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.469705,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.6694,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.970849,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.971811,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.17044,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.272985,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.374255,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.375181,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.37591,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.171839,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1102.93,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "slow-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.197709,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.299154,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.500176,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.700337,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.001435,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.002606,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.201662,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.20364,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.50383,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.506148,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.507048,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.202225,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 3.22,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "slow-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.177459,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.278603,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.481531,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.683273,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.982821,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.989503,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.183169,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.183998,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.490593,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.491322,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.491616,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.184187,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 1.02,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "slow-tool",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.162239,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.262393,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.464685,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.663683,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.96592,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.966651,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.164956,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.172328,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.468061,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.470135,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.470999,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.166541,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 2.94,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "error-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "I couldn't check availability. Please try again.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf I couldn't check availability. Please try again."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.18639,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.286687,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.489971,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.68808,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.991215,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.993176,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.188521,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.294326,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.190571,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.191925,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.193522,
+        "kind": "output_text",
+        "text": "I couldn't check availability. Please try again."
+      },
+      {
+        "t": 5.189599,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 899.2,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "error-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "I couldn't check availability. Please try again.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf I couldn't check availability. Please try again."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.17457,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.27579,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.478752,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.677539,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.980288,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.982792,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.179908,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.284059,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.184119,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.18629,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.187157,
+        "kind": "output_text",
+        "text": "I couldn't check availability. Please try again."
+      },
+      {
+        "t": 5.180487,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 903.1,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "error-result",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "I couldn't check availability. Please try again.",
+    "output_text": "I couldn't check availability. Please try again.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"error\": \"availability service unavailable\"}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf I couldn't check availability. Please try again."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.267241,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.368285,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.570998,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.769734,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.07144,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.072646,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.270355,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.377404,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.272552,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.274362,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.275941,
+        "kind": "output_text",
+        "text": "I couldn't check availability. Please try again."
+      },
+      {
+        "t": 5.271864,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 898.54,
+    "revision": "patch",
+    "repeat": 3
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.179715,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.280777,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.484959,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.682253,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.986477,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.989347,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.183815,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.337031,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.539192,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.990543,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.543601,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.545904,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.54681,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.191921,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 556.27,
+    "revision": "patch",
+    "repeat": 1
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.177869,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.278881,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.48146,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.680579,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.982668,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 0.983853,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.181521,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.332692,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.53311,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.985042,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.535311,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.537084,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.538525,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.184113,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 553.48,
+    "revision": "patch",
+    "repeat": 2
+  },
+  {
+    "case": "two-speech-bursts",
+    "status": "pass",
+    "event_order_valid": true,
+    "expected_answer": "Tuesday at ten works.",
+    "output_text": "Tuesday at ten works.",
+    "snapshot_before_teardown": {
+      "inferences": 2,
+      "tool_calls": 1,
+      "user_turn_open": false,
+      "controller_speaking": false,
+      "assistant_speaking_state": false,
+      "context": [
+        {
+          "role": "user",
+          "content": "can I book an appointment"
+        },
+        {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_1",
+              "function": {
+                "name": "check_availability",
+                "arguments": "{}"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"available\": [\"Tuesday 10:00\"]}",
+          "tool_call_id": "call_1"
+        },
+        {
+          "role": "assistant",
+          "content": "\u25cf Tuesday at ten works."
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.210755,
+        "kind": "speech_start"
+      },
+      {
+        "t": 0.313615,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 0.516629,
+        "kind": "inference",
+        "number": 1
+      },
+      {
+        "t": 0.714159,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.018054,
+        "kind": "tool_commit"
+      },
+      {
+        "t": 1.020428,
+        "kind": "tool_started"
+      },
+      {
+        "t": 1.214835,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 1.366,
+        "kind": "speech_start"
+      },
+      {
+        "t": 1.567342,
+        "kind": "speech_stop"
+      },
+      {
+        "t": 2.021172,
+        "kind": "tool_result"
+      },
+      {
+        "t": 2.569676,
+        "kind": "watchdog"
+      },
+      {
+        "t": 2.571002,
+        "kind": "inference",
+        "number": 2
+      },
+      {
+        "t": 2.572134,
+        "kind": "output_text",
+        "text": "Tuesday at ten works."
+      },
+      {
+        "t": 5.218164,
+        "kind": "snapshot"
+      }
+    ],
+    "pending_tasks_after_cleanup": 0,
+    "answer_after_result_ms": 550.96,
+    "revision": "patch",
+    "repeat": 3
+  }
+]

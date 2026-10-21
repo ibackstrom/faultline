@@ -1,0 +1,78 @@
+2026-10-21 20:50:07.617 | INFO     | pipecat:<module>:54 - ᓚᘏᗢ Pipecat 1.12.1.dev813 (Python 3.12.9 (main, Feb 12 2025, 15:09:19) [Clang 19.1.6 ]) ᓚᘏᗢ
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Pipeline#0::Source -> Tap#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Tap#0 -> LLMUserAggregator#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking LLMUserAggregator#0 -> ScriptedLLM#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking ScriptedLLM#0 -> Tap#1
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Tap#1 -> LLMAssistantAggregator#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking LLMAssistantAggregator#0 -> Pipeline#0::Sink
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Pipeline#1::Source -> QueuedFrameProcessor#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking QueuedFrameProcessor#0 -> Pipeline#0
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Pipeline#0 -> QueuedFrameProcessor#1
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking QueuedFrameProcessor#1 -> Pipeline#1::Sink
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking PipelineWorker#0::Source -> Pipeline#1
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.processors.frame_processor:link:696 - Linking Pipeline#1 -> PipelineWorker#0::Sink
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.workers.runner:add_workers:230 - WorkerRunner 'runner-41f54cc4': added worker 'PipelineWorker#0'
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.workers.runner:run:273 - WorkerRunner 'runner-41f54cc4': started running
+2026-10-21 20:50:08.104 | DEBUG    | pipecat.workers.runner:_start_worker:459 - WorkerRunner 'runner-41f54cc4': starting worker 'PipelineWorker#0'
+2026-10-21 20:50:08.106 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_start:1309 - PipelineWorker#0: Starting. Waiting for StartFrame#0 to reach the end of the pipeline...
+2026-10-21 20:50:08.107 | INFO     | pipecat.services.ai_service:_update_settings:173 - ScriptedLLM#0: updated settings fields: {'filter_incomplete_user_turns', 'user_turn_completion_config'}
+2026-10-21 20:50:08.107 | INFO     | pipecat.services.llm_service:_update_settings:863 - ScriptedLLM#0: Incomplete turn filtering enabled
+2026-10-21 20:50:08.107 | DEBUG    | pipecat.services.llm_service:_compose_system_instruction:846 - ScriptedLLM#0: System instruction composed: 
+TURN COMPLETION PROTOCOL (mandatory):
+The user's words reach you from speech recognition, usually without punctuation, and sometimes before they have finished talking. Before you reply, decide whether their turn is complete, and start every response with exactly one of these markers as its very first character:
+
+●  the user's turn is complete: answer them. Write ●, a space, then your full reply. Never write ● on its own.
+◐  the user stopped mid-sentence and will continue in a few seconds. Write ◐ and nothing else.
+○  the user needs time to think or asked you to wait. Write ○ and nothing else.
+
+Deciding:
+- Complete means conversationally complete, not long. One word can be a complete answer to your question: "yes", "no thanks", "Tuesday", "Japan", "four". A question to you is complete. A correction, or a request to repeat yourself, is complete.
+- Grammatically complete is not the same as conversationally complete. If the user has only acknowledged your question or reacted to what you said, without answering it ("that's a good question", "oh wow, okay", "that's interesting", "hmm", "well"), they have not taken their turn yet: ○.
+- Cut off (◐): the last words leave a phrase open, in whatever language the user speaks: a sentence that ends on a conjunction, a preposition, an article, or the word for "because"; a list that is still going; a number that is only partly said. A fragment like this is not a request for help. Do not answer it, do not ask what they need, and do not guess the rest: wait with ◐.
+- Needs time (○): "hold on", "let me think", "give me a second", "one moment". Filler followed by a real answer, such as "hmm, I'd go to Japan for the food", is complete.
+- When the user's latest words continue an earlier fragment (your previous response was ◐ or ○), judge the fragments together as one turn. If the combined turn still ends open, ◐; if it now answers your question, ●.
+- If a tool call is the right response, make the tool call; the turn is complete.
+
+Format rules:
+- The marker is the first character. No text, quotes, backticks or explanation before it.
+- After ◐ or ○, output nothing: no words, no explanation, no nudge. The system waits and prompts you again later.
+- Exactly one marker per response.
+
+Examples:
+- You asked where they would go and the user says "i'd go to japan because i love". Respond with only ◐.
+- The user says "i need help with". Respond with only ◐.
+- You asked for their phone number and the user says "it's five five five". Respond with only ◐.
+- You asked what they want to order and the user says "a large pepperoni pizza a garden salad and". Respond with only ◐.
+- You asked where they would go and the user says "that's a good question let me think". Respond with only ○.
+- You asked where they would go and the user says "that's interesting". Respond with only ○.
+- The user says "hold on a second". Respond with only ○.
+- You asked where they would go and the user says "japan". Respond with ● followed by your reply, for example "● Japan is a wonderful choice. What draws you there?"
+- You asked whether to book it and the user says "yes". Respond with ● followed by your reply, for example "● Done, I'll book it now."
+- The user says "can you help me book a flight to new york next week". Respond with ● followed by your reply, for example "● Of course. What day would you like to leave, and from which city?"
+- Your previous response was ◐ after the user said "i'd go to", and now the user says "japan because". Together that is still open: respond with only ◐.
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.workers.runner:_send_registry:511 - WorkerRunner 'runner-41f54cc4': broadcasting registry: ['PipelineWorker#0']
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.workers.base_worker:_maybe_activate:1284 - Worker 'PipelineWorker#0': activated
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_start:1326 - PipelineWorker#0: StartFrame#0 reached the end of the pipeline, pipeline is now ready.
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_on_user_turn_started:1412 - LLMUserAggregator#0: User started speaking (strategy: VADUserTurnStartStrategy#0)
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.processors.frame_processor:broadcast_interruption:1041 - LLMUserAggregator#0: broadcasting interruption
+2026-10-21 20:50:08.108 | DEBUG    | pipecat.turns.user_stop.speech_timeout_user_turn_stop_strategy:process_frame:163 - SpeechTimeoutUserTurnStopStrategy#0 VADUserStartedSpeakingFrame received
+2026-10-21 20:50:08.211 | DEBUG    | pipecat.turns.user_stop.speech_timeout_user_turn_stop_strategy:process_frame:166 - SpeechTimeoutUserTurnStopStrategy#0 VADUserStoppedSpeakingFrame received
+2026-10-21 20:50:08.211 | WARNING  | pipecat.turns.user_stop.speech_timeout_user_turn_stop_strategy:_handle_vad_user_stopped_speaking:199 - SpeechTimeoutUserTurnStopStrategy#0: VAD stop_secs (0.0s) differs from the recommended default (0.2s). Built-in p99 latency values assume stop_secs=0.2. Re-run https://github.com/pipecat-ai/stt-benchmark with your settings and pass the TTFS P99 latency result as ttfs_p99_latency to your STT service.
+2026-10-21 20:50:08.413 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_on_user_turn_inference_triggered:1459 - LLMUserAggregator#0: User turn inference triggered (strategy: SpeechTimeoutUserTurnStopStrategy#0)
+2026-10-21 20:50:08.612 | DEBUG    | pipecat.turns.user_stop.speech_timeout_user_turn_stop_strategy:process_frame:163 - SpeechTimeoutUserTurnStopStrategy#0 VADUserStartedSpeakingFrame received
+2026-10-21 20:50:08.917 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_maybe_mute_frame:1307 - LLMUserAggregator#0: user is now muted
+2026-10-21 20:50:08.917 | DEBUG    | pipecat.services.llm_service:_run_function_call:1874 - ScriptedLLM#0 Calling function [check_availability:call_1] with arguments {}
+2026-10-21 20:50:08.918 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_handle_function_calls_started:2055 - LLMAssistantAggregator#0 FunctionCallsStartedFrame: ['check_availability:call_1']
+2026-10-21 20:50:08.919 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_handle_function_call_in_progress:2060 - LLMAssistantAggregator#0 FunctionCallInProgressFrame: [check_availability:call_1]
+2026-10-21 20:50:09.919 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_maybe_mute_frame:1307 - LLMUserAggregator#0: user is now unmuted
+2026-10-21 20:50:09.920 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_handle_function_call_result:2096 - LLMAssistantAggregator#0 FunctionCallResultFrame: [check_availability:call_1]
+2026-10-21 20:50:10.466 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_on_user_turn_stopped:1507 - LLMUserAggregator#0: User stopped speaking (strategy: None)
+2026-10-21 20:50:10.468 | DEBUG    | pipecat.processors.aggregators.llm_response_universal:_maybe_push_context:2205 - LLMAssistantAggregator#0: Pushing context frame!
+2026-10-21 20:50:10.468 | DEBUG    | pipecat.turns.user_turn_completion_mixin:_push_turn_text:627 - COMPLETE (●) detected, pushing buffered text
+2026-10-21 20:50:13.167 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_end:1346 - PipelineWorker#0: Closing. Waiting for EndFrame#0(reason: None) to reach the end of the pipeline...
+2026-10-21 20:50:13.170 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_end:1355 - PipelineWorker#0: EndFrame#0(reason: None) reached the end of the pipeline, pipeline is closing.
+2026-10-21 20:50:13.170 | DEBUG    | pipecat.utils.base_object:cleanup:179 - PipelineWorker#0: waiting on event handlers to finish ['on_pipeline_finished']...
+2026-10-21 20:50:13.172 | DEBUG    | pipecat.pipeline.worker:run:909 - Pipeline worker PipelineWorker#0 is finishing...
+2026-10-21 20:50:13.173 | DEBUG    | pipecat.pipeline.worker:run:914 - Pipeline worker PipelineWorker#0 has finished
+2026-10-21 20:50:13.173 | DEBUG    | pipecat.workers.runner:run:316 - WorkerRunner 'runner-41f54cc4': finished running
