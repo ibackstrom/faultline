@@ -13,6 +13,11 @@ top navigation. Both use `campaign-styles.css`, `landing.js` and the two
 `assets/optical-*.jpg` images. The images are AI-generated metaphors, not
 test evidence. About and existing case pages retain their original stylesheet.
 
+`assets/faultline-logo-1200.png` is the existing F mark exported at 1200×1200
+with extra inner padding for Google's circular logo crop. It is also visible
+in the service-page headers. Use it as a Business logo asset, not an ad image.
+Technical dimensions do not guarantee Google approval or brand verification.
+
 Contact details appear only after a click. This deters simple HTML scrapers,
 not bots that execute JavaScript. Only the dedicated ad landing pre-fills
 the `FLSEARCH01` email marker; the homepage does not label organic inquiries

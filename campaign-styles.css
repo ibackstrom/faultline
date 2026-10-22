@@ -6,7 +6,8 @@ li{overflow-wrap:anywhere}
 :root{--ink:#1d1d1f;--muted:#62626a;--blue:#0066cc;--line:#dedee3;--paper:#f5f5f7}
 button,.button{background:#0071e3}
 .landing .top{border-bottom:0;padding:24px 0}
-.landing .brand{font-weight:750;letter-spacing:.045em}
+.landing .brand{display:inline-flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.045em}
+.landing .brand img{width:32px;height:32px;border-radius:6px}
 .landing .top nav a{color:var(--ink);text-decoration:none}
 .landing .top nav a:hover{color:var(--blue)}
 .landing .hero-showcase{padding:52px 0 40px;text-align:center}
