@@ -56,6 +56,7 @@
         <div class="proof-copy"><p class="mono">PIPECAT / VOICE AGENT</p><h3>Checking that the agent<br>answers again.</h3><p>The agent went silent after a tool call. We reproduced the issue and tested a contributor’s proposed fix across eight event sequences.</p><a class="text-link" href="pipecat-silence.html">Read the case study <span aria-hidden="true">↗</span></a></div>
         <div><p>Before: 6/24 checks passed.<br>With the proposed fix: 24/24 passed.</p><p class="chart-note">Local pipeline, synthetic speech and scripted responses. Three repeats per sequence; not live calls, a customer engagement or a production reliability score. Original report and patch credited in the case study.</p></div>
       </div>
+      <p class="evidence-note reveal"><a href="pipecat-6301/report.html">New: keeping tool results correct across reconnects.</a> Six local checks, a proposed Pipecat patch and runnable tests. Mocked provider connections; not live calls.</p>
       <details class="reveal"><summary>Explore three more technical examples</summary>
       <p class="evidence-note reveal">Three further defects in two local implementations, below. Each reproduced, corrected in isolation and rerun. Component tests, not customer audits.</p>
       <div class="case-grid">

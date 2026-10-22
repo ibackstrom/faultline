@@ -1,0 +1,85 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.9, pytest-9.1.1, pluggy-1.7.0 -- <workspace>/.amp/in/pipecat-6301-src/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: <workspace>/.amp/in/pipecat-6301-src
+configfile: pyproject.toml
+plugins: xdist-3.8.0, asyncio-1.4.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 62 items
+
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-2.5-flash-native-audio-preview-12-2025-True] PASSED [  1%]
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-3-pro-preview-False] PASSED [  3%]
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-3.8-live-True] PASSED [  4%]
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-3.8-live-extended-thinking-True] PASSED [  6%]
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-4-live-True] PASSED [  8%]
+tests/test_gemini_live_interaction_status.py::test_non_blocking_tool_support_by_model[models/gemini-2.0-flash-live-001-True] PASSED [  9%]
+tests/test_gemini_live_interaction_status.py::test_gemini_3_protocol_detection[models/gemini-3-pro-preview] PASSED [ 11%]
+tests/test_gemini_live_interaction_status.py::test_gemini_3_protocol_detection[models/gemini-3.8-live] PASSED [ 12%]
+tests/test_gemini_live_interaction_status.py::test_gemini_3_protocol_detection[models/gemini-3.8-live-extended-thinking] PASSED [ 14%]
+tests/test_gemini_live_interaction_status.py::test_thinking_level_defaults_only_on_live_thinking_models[models/gemini-3.8-live-extended-thinking-LOW] PASSED [ 16%]
+tests/test_gemini_live_interaction_status.py::test_thinking_level_defaults_only_on_live_thinking_models[models/gemini-3.8-live-None] PASSED [ 17%]
+tests/test_gemini_live_interaction_status.py::test_thinking_level_defaults_only_on_live_thinking_models[models/gemini-2.0-flash-live-001-None] PASSED [ 19%]
+tests/test_gemini_live_interaction_status.py::test_thinking_level_defaults_only_on_live_thinking_models[models/gemini-2.5-flash-exp-native-audio-thinking-dialog-None] PASSED [ 20%]
+tests/test_gemini_live_interaction_status.py::test_explicit_thinking_level_is_kept PASSED [ 22%]
+tests/test_gemini_live_interaction_status.py::test_thinking_level_default_merges_with_other_thinking_settings PASSED [ 24%]
+tests/test_gemini_live_interaction_status.py::test_turn_complete_while_in_progress_holds_end_of_turn PASSED [ 25%]
+tests/test_gemini_live_interaction_status.py::test_idle_status_closes_a_held_turn[IDLE] PASSED [ 27%]
+tests/test_gemini_live_interaction_status.py::test_idle_status_closes_a_held_turn[REQUIRES_ACTION] PASSED [ 29%]
+tests/test_gemini_live_interaction_status.py::test_turn_complete_bundled_with_idle_closes_immediately PASSED [ 30%]
+tests/test_gemini_live_interaction_status.py::test_turn_complete_without_interaction_status_closes_turn PASSED [ 32%]
+tests/test_gemini_live_interaction_status.py::test_unspecified_status_does_not_hold_the_turn PASSED [ 33%]
+tests/test_gemini_live_interaction_status.py::test_idle_without_a_held_turn_pushes_nothing PASSED [ 35%]
+tests/test_gemini_live_interaction_status.py::test_interruption_discards_a_held_turn PASSED [ 37%]
+tests/test_gemini_live_interaction_status.py::test_held_turn_is_released_when_idle_never_arrives PASSED [ 38%]
+tests/test_gemini_live_interaction_status.py::test_streaming_content_keeps_held_turn_open PASSED [ 40%]
+tests/test_gemini_live_interaction_status.py::test_warns_when_sdk_predates_interaction_status PASSED [ 41%]
+tests/test_gemini_live_interaction_status.py::test_no_warning_when_sdk_supports_interaction_status PASSED [ 43%]
+tests/test_gemini_live_interaction_status.py::test_no_warning_for_models_that_report_no_status[models/gemini-3.8-live] PASSED [ 45%]
+tests/test_gemini_live_interaction_status.py::test_no_warning_for_models_that_report_no_status[models/gemini-2.5-flash-native-audio-preview-12-2025] PASSED [ 46%]
+tests/test_gemini_live_interaction_status.py::test_no_warning_for_models_that_report_no_status[models/gemini-2.5-flash-exp-native-audio-thinking-dialog] PASSED [ 48%]
+tests/test_gemini_live_interaction_status.py::test_sdk_warning_is_logged_once PASSED [ 50%]
+tests/test_gemini_live_interaction_status.py::test_turn_complete_bundled_with_idle_supersedes_a_held_turn PASSED [ 51%]
+tests/test_gemini_live_interaction_status.py::test_sync_tools_block_where_the_model_allows_it[models/gemini-2.0-flash-live-001-None] PASSED [ 53%]
+tests/test_gemini_live_interaction_status.py::test_sync_tools_block_where_the_model_allows_it[models/gemini-3.8-live-BLOCKING] PASSED [ 54%]
+tests/test_gemini_live_interaction_status.py::test_sync_tools_block_where_the_model_allows_it[models/gemini-3.8-live-extended-thinking-None] PASSED [ 56%]
+tests/test_gemini_live_interaction_status.py::test_sync_tool_on_a_strictly_non_blocking_model_warns_once PASSED [ 58%]
+tests/test_gemini_live_interaction_status.py::test_no_warning_when_sync_tools_can_block PASSED [ 59%]
+tests/test_gemini_live_interaction_status.py::test_partial_assistant_message_survives_interruption PASSED [ 61%]
+tests/test_gemini_live_language.py::test_constructor_converts_language_to_locale_code PASSED [ 62%]
+tests/test_gemini_live_language.py::test_constructor_keeps_language_string_as_given PASSED [ 64%]
+tests/test_gemini_live_language.py::test_settings_update_converts_language_to_locale_code PASSED [ 66%]
+tests/test_gemini_live_language.py::test_settings_update_keeps_language_string_as_given PASSED [ 67%]
+tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[False] PASSED [ 69%]
+tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[True] PASSED [ 70%]
+tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[False] PASSED [ 72%]
+tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[True] PASSED [ 74%]
+tests/test_gemini_live_tool_resumption.py::test_fresh_reconnect_seeds_history PASSED [ 75%]
+tests/test_gemini_live_tool_resumption.py::test_ordinary_disconnect_clears_bookkeeping PASSED [ 77%]
+tests/test_gemini_live_tracing.py::TestGeminiLiveToolResultTracing::test_captures_tool_result_attributes SKIPPED [ 79%]
+tests/test_gemini_live_tracing.py::TestGeminiLiveToolResultTracing::test_long_result_is_truncated SKIPPED [ 80%]
+tests/test_gemini_live_tracing.py::TestGeminiLiveToolResultTracing::test_non_dict_result_omits_result_attribute SKIPPED [ 82%]
+tests/test_gemini_live_tracing.py::TestGeminiLiveToolResultTracing::test_result_status_error SKIPPED [ 83%]
+tests/test_gemini_live_tracing.py::TestGeminiLiveToolResultTracing::test_result_status_success SKIPPED [ 85%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_buffers_audio_until_turn_starts PASSED [ 87%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_flushes_preroll_after_activity_start PASSED [ 88%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_streams_audio_during_turn PASSED [ 90%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_sends_activity_end_on_turn_stop PASSED [ 91%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_preroll_capped_to_default_window PASSED [ 93%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_preroll_sized_from_vad_start_secs PASSED [ 95%]
+tests/test_gemini_live_user_audio.py::test_manual_vad_preroll_override_pins_value_and_ignores_vad_params PASSED [ 96%]
+tests/test_gemini_live_user_audio.py::test_server_vad_streams_audio_when_idle PASSED [ 98%]
+tests/test_gemini_live_user_audio.py::test_server_vad_does_not_send_activity_markers PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/test_gemini_live_interaction_status.py: 11 warnings
+  <workspace>/.amp/in/pipecat-6301-src/src/pipecat/services/google/gemini_live/llm.py:1574: DeprecationWarning: Setting `LiveConnectConfig.generation_config` is deprecated, please set the fields on `LiveConnectConfig` directly. It will be removed in the next major version (not before 7/31/2026).
+    async with self._client.aio.live.connect(model=model, config=config) as session:
+
+tests/test_gemini_live_interaction_status.py: 10 warnings
+  <workspace>/.amp/in/pipecat-6301-src/.venv/lib/python3.12/site-packages/pydantic/main.py:520: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `enum` - serialized value may not be as expected [field_name='thinking_level', input_value='LOW', input_type=str])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: <workspace>/FAULTLINE/artifacts/pipecat-6301/patched-final.xml -
+================== 57 passed, 5 skipped, 21 warnings in 3.39s ==================

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="6" time="0.724" timestamp="2026-10-22T12:54:02.409206+02:00" hostname="Katabasiss-MacBook-Pro.local"><testcase classname="tests.test_gemini_live_tool_resumption" name="test_settled_results_not_replayed_on_resume[False]" time="0.058"><failure message="AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]&#10;  &#10;  At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')&#10;  Left contains one more item: ('call-2', 'list_items')&#10;  &#10;  Full diff:&#10;    [&#10;  +     (&#10;  +         'call-1',&#10;  +         'tool_call_result',&#10;  +     ),&#10;        (&#10;            'call-2',&#10;            'list_items',&#10;        ),&#10;    ]">service = &lt;pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10db226f0&gt;
+asynchronous = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("asynchronous", [False, True])
+    async def test_settled_results_not_replayed_on_resume(service, asynchronous):
+        context = service._context
+        first = service._session
+        service._tool_call_id_to_name["call-1"] = "list_items"
+        context.add_messages(result_messages("call-1", asynchronous=asynchronous))
+        await push_context(service, context)
+        assert [(r.id, r.name) for r in sent(first)] == [("call-1", "list_items")]
+        service._session_resumption_handle = "test-resumption-handle"
+    
+        for call_id in ("call-2", "call-3"):
+            session = AsyncMock()
+    
+            async def connect(session_resumption_handle=None, session=session):
+                await service._handle_session_ready(session)
+    
+            service._connect = connect
+            await service._reconnect()
+            service._tool_call_id_to_name[call_id] = "list_items"
+            context.add_messages(result_messages(call_id, asynchronous=asynchronous))
+            await push_context(service, context)
+            await push_context(service, context)
+&gt;           assert [(r.id, r.name) for r in sent(session)] == [(call_id, "list_items")]
+E           AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+E             
+E             At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+E             Left contains one more item: ('call-2', 'list_items')
+E             
+E             Full diff:
+E               [
+E             +     (
+E             +         'call-1',
+E             +         'tool_call_result',
+E             +     ),
+E                   (
+E                       'call-2',
+E                       'list_items',
+E                   ),
+E               ]
+
+tests/test_gemini_live_tool_resumption.py:84: AssertionError</failure></testcase><testcase classname="tests.test_gemini_live_tool_resumption" name="test_settled_results_not_replayed_on_resume[True]" time="0.040"><failure message="AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]&#10;  &#10;  At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')&#10;  Left contains one more item: ('call-2', 'list_items')&#10;  &#10;  Full diff:&#10;    [&#10;  +     (&#10;  +         'call-1',&#10;  +         'tool_call_result',&#10;  +     ),&#10;        (&#10;            'call-2',&#10;            'list_items',&#10;        ),&#10;    ]">service = &lt;pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10dc37f50&gt;
+asynchronous = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("asynchronous", [False, True])
+    async def test_settled_results_not_replayed_on_resume(service, asynchronous):
+        context = service._context
+        first = service._session
+        service._tool_call_id_to_name["call-1"] = "list_items"
+        context.add_messages(result_messages("call-1", asynchronous=asynchronous))
+        await push_context(service, context)
+        assert [(r.id, r.name) for r in sent(first)] == [("call-1", "list_items")]
+        service._session_resumption_handle = "test-resumption-handle"
+    
+        for call_id in ("call-2", "call-3"):
+            session = AsyncMock()
+    
+            async def connect(session_resumption_handle=None, session=session):
+                await service._handle_session_ready(session)
+    
+            service._connect = connect
+            await service._reconnect()
+            service._tool_call_id_to_name[call_id] = "list_items"
+            context.add_messages(result_messages(call_id, asynchronous=asynchronous))
+            await push_context(service, context)
+            await push_context(service, context)
+&gt;           assert [(r.id, r.name) for r in sent(session)] == [(call_id, "list_items")]
+E           AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+E             
+E             At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+E             Left contains one more item: ('call-2', 'list_items')
+E             
+E             Full diff:
+E               [
+E             +     (
+E             +         'call-1',
+E             +         'tool_call_result',
+E             +     ),
+E                   (
+E                       'call-2',
+E                       'list_items',
+E                   ),
+E               ]
+
+tests/test_gemini_live_tool_resumption.py:84: AssertionError</failure></testcase><testcase classname="tests.test_gemini_live_tool_resumption" name="test_pending_async_result_keeps_name_and_scheduling[False]" time="0.039"><failure message="AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')&#10;  &#10;  At index 1 diff: 'tool_call_result' != 'list_items'&#10;  &#10;  Full diff:&#10;    (&#10;        'pending',&#10;  -     'list_items',&#10;  +     'tool_call_result',&#10;    )">service = &lt;pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10dcab950&gt;
+finish_before_ready = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("finish_before_ready", [False, True])
+    async def test_pending_async_result_keeps_name_and_scheduling(service, finish_before_ready):
+        context = service._context
+        service._tool_call_id_to_name["pending"] = "list_items"
+        service._session_resumption_handle = "test-resumption-handle"
+        session = AsyncMock()
+    
+        async def connect(session_resumption_handle=None):
+            if finish_before_ready:
+                context.add_messages(result_messages("pending", asynchronous=True))
+            await service._handle_session_ready(session)
+    
+        service._connect = connect
+        await service._reconnect()
+        if not finish_before_ready:
+            context.add_messages(result_messages("pending", asynchronous=True))
+        await push_context(service, context)
+        await push_context(service, context)
+        responses = sent(session)
+        assert len(responses) == 1
+        response = responses[0]
+&gt;       assert (response.id, response.name) == ("pending", "list_items")
+E       AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+E         
+E         At index 1 diff: 'tool_call_result' != 'list_items'
+E         
+E         Full diff:
+E           (
+E               'pending',
+E         -     'list_items',
+E         +     'tool_call_result',
+E           )
+
+tests/test_gemini_live_tool_resumption.py:109: AssertionError</failure></testcase><testcase classname="tests.test_gemini_live_tool_resumption" name="test_pending_async_result_keeps_name_and_scheduling[True]" time="0.041"><failure message="AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')&#10;  &#10;  At index 1 diff: 'tool_call_result' != 'list_items'&#10;  &#10;  Full diff:&#10;    (&#10;        'pending',&#10;  -     'list_items',&#10;  +     'tool_call_result',&#10;    )">service = &lt;pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10dce5e50&gt;
+finish_before_ready = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("finish_before_ready", [False, True])
+    async def test_pending_async_result_keeps_name_and_scheduling(service, finish_before_ready):
+        context = service._context
+        service._tool_call_id_to_name["pending"] = "list_items"
+        service._session_resumption_handle = "test-resumption-handle"
+        session = AsyncMock()
+    
+        async def connect(session_resumption_handle=None):
+            if finish_before_ready:
+                context.add_messages(result_messages("pending", asynchronous=True))
+            await service._handle_session_ready(session)
+    
+        service._connect = connect
+        await service._reconnect()
+        if not finish_before_ready:
+            context.add_messages(result_messages("pending", asynchronous=True))
+        await push_context(service, context)
+        await push_context(service, context)
+        responses = sent(session)
+        assert len(responses) == 1
+        response = responses[0]
+&gt;       assert (response.id, response.name) == ("pending", "list_items")
+E       AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+E         
+E         At index 1 diff: 'tool_call_result' != 'list_items'
+E         
+E         Full diff:
+E           (
+E               'pending',
+E         -     'list_items',
+E         +     'tool_call_result',
+E           )
+
+tests/test_gemini_live_tool_resumption.py:109: AssertionError</failure></testcase><testcase classname="tests.test_gemini_live_tool_resumption" name="test_fresh_reconnect_seeds_history" time="0.041" /><testcase classname="tests.test_gemini_live_tool_resumption" name="test_ordinary_disconnect_clears_bookkeeping" time="0.038" /></testsuite></testsuites>

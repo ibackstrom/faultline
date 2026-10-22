@@ -1,0 +1,60 @@
+{
+  "stage": "offline-pipecat-tool-resumption",
+  "date": "2026-10-22",
+  "model": null,
+  "digest": null,
+  "model_calls": 0,
+  "provider_requests": 0,
+  "configuration": "No inference; temperature, seed, context/output budgets and thinking are not applicable",
+  "base_commit": "3c9da9d83d038ef82c272bf234856d9543f68888",
+  "totals": {
+    "base": {
+      "passed": 2,
+      "failed": 4,
+      "errors": 0
+    },
+    "patched_targeted": {
+      "passed": 6,
+      "failed": 0,
+      "errors": 0
+    },
+    "patched_gemini_suite": {
+      "passed": 57,
+      "skipped": 5,
+      "failed": 0,
+      "warnings": 21
+    },
+    "faultline_system": {
+      "tests": 15,
+      "skipped": 1
+    },
+    "faultline_venv": {
+      "passed": 24
+    }
+  },
+  "invalid_preliminary_run": "before.txt: three test-helper errors; excluded from final totals",
+  "comment_url": "https://github.com/pipecat-ai/pipecat/issues/6301#issuecomment-6339049122",
+  "source_checksums": {
+    "base_llm_sha256": "cbb0ecf43b28bc6f8d46d02a10706cc49b6c771f989cbb06fff0228793b63672",
+    "patched_llm_sha256": "5e1aa696f05a249d596aa01dc98820e33a14afeaa310699cccf54aa02de3c11d"
+  },
+  "sha256": {
+    "README.md": "e3cf2af74159da4ec5a6180badb068e806b80ec9f610f539955d3afb68d1b830",
+    "base-final.txt": "a7ba54bc94b5f9ed1bcefaac64da320f7fdc73197646dc7906022919ccf5392c",
+    "base-final.xml": "49ed06427bd93b8f19c5acf75b2ec155dfd963704d9b15ddbb90c5388e0b67c0",
+    "before-valid.txt": "2e209bd83a748b402f3a12b4a651cbff3b4faa50b4c9b6d96fcc16c945276961",
+    "before-valid.xml": "211f7ef7a27aee622a5bdbf96b391940312c233b1caa43ae9d4f34b73108d066",
+    "before.txt": "96fad62315fee13b67ec2de9c47272fc70330547111da398e90700fc195143b2",
+    "cases.json": "88748db62f44dffaf6ae592b488bd47f195a9dd88c2d727bf6e023591e9b3af1",
+    "environment.txt": "3a3014da93ecdff711bbe478e0d3973e454315b0ca28722a2e0dc7ab96688d91",
+    "fix.patch": "719e767e574eacaba71991eb1c42bf0d6b04f125f4828c5615149aa8754d8ef0",
+    "patched-final.txt": "3869d578ff7f1ac0e3b208e4f50c72ddc675dafb0640d92d185afb7d48d8cb29",
+    "patched-final.xml": "a9ef1a7453893d70eb9daf80c5610bf6ad7f434e0f04946911f4dabadb7cd208",
+    "report.html": "fcb618e6a6dffe54b76b898fdb8bdebcb007d0b3c41a5e850a9b32ebe4f7164f",
+    "reporter-after.txt": "d021f86c10603d453d2c1f9788f47781f8f023d2f33908bb1ce16400397b75b7",
+    "reporter-before.txt": "6414c4c928efb2eb522da5c1c69123f565ae04f505677a480e571a57af44f258",
+    "reporter_repro.py": "05c71cdd15e909b330b29eaef630f664de1b0d8b78bc8a51d169a3665382a2f8",
+    "test_gemini_live_tool_resumption.py": "e375ed65e79bb54edce4ec916a0fa6fceec834999f161ad576d2d7b193d89a6a"
+  },
+  "publication_note": "Public subset of local evidence; absolute workspace paths redacted. Source checksums refer to original source. No inference."
+}

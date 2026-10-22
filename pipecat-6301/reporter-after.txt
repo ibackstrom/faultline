@@ -1,0 +1,7 @@
+2026-10-22 12:54:03.362 | INFO     | pipecat:<module>:54 - ᓚᘏᗢ Pipecat 1.13.1.dev178 (Python 3.12.9 (main, Feb 12 2025, 15:09:19) [Clang 19.1.6 ]) ᓚᘏᗢ
+2026-10-22 12:54:03.765 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#0: 'list_items' registered with explicit cancellable_by_llm=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancellable_by_llm' id='4529174432'>.
+2026-10-22 12:54:03.765 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2119 - Sending tool result to Gemini Live for tool_call_id=call-1, tool_result_message={'items': []}
+2026-10-22 12:54:03.766 | INFO     | pipecat.services.google.gemini_live.llm:_disconnect:1790 - Disconnecting from Gemini service
+2026-10-22 12:54:03.766 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2119 - Sending tool result to Gemini Live for tool_call_id=call-2, tool_result_message={'items': []}
+connection 1 sent: [('call-1', 'list_items')]
+connection 2 sent: [('call-2', 'list_items')]

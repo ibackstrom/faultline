@@ -1,0 +1,20 @@
+{
+  "issue": "https://github.com/pipecat-ai/pipecat/issues/6301",
+  "base_commit": "3c9da9d83d038ef82c272bf234856d9543f68888",
+  "model_calls": 0,
+  "provider_requests": 0,
+  "level": "Real Pipecat service, mocked SDK session and connection establishment; not live Gemini or end-to-end voice",
+  "cases": [
+    "Settled synchronous result is not replayed after two resumed reconnects; new results delivered once despite repeated context frames",
+    "Settled async final is not replayed after two resumed reconnects; new results delivered once despite repeated context frames",
+    "Async call spanning resume retains name, WHEN_IDLE scheduling and final will_continue=false",
+    "Result added to context during reconnect, before readiness, remains deliverable on next context push (not previously sent)",
+    "Reconnect without a handle still seeds conversation history and resets tool bookkeeping",
+    "Ordinary disconnect, even with a handle, resets tool bookkeeping"
+  ],
+  "limits": [
+    "No claim about Gemini reaction to duplicates",
+    "No claim of exactly-once delivery after network send failures",
+    "No claim about a context frame processed while disconnected"
+  ]
+}

@@ -1,0 +1,290 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.9, pytest-9.1.1, pluggy-1.7.0 -- <workspace>/.amp/in/pipecat-6301-src/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: <workspace>/.amp/in/pipecat-6301-src
+configfile: pyproject.toml
+plugins: xdist-3.8.0, asyncio-1.4.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[False] FAILED [ 16%]
+tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[True] FAILED [ 33%]
+tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[False] FAILED [ 50%]
+tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[True] FAILED [ 66%]
+tests/test_gemini_live_tool_resumption.py::test_fresh_reconnect_seeds_history PASSED [ 83%]
+tests/test_gemini_live_tool_resumption.py::test_ordinary_disconnect_clears_bookkeeping PASSED [100%]
+
+=================================== FAILURES ===================================
+______________ test_settled_results_not_replayed_on_resume[False] ______________
+
+service = <pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10b8ce6f0>
+asynchronous = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("asynchronous", [False, True])
+    async def test_settled_results_not_replayed_on_resume(service, asynchronous):
+        context = service._context
+        first = service._session
+        service._tool_call_id_to_name["call-1"] = "list_items"
+        context.add_messages(result_messages("call-1", asynchronous=asynchronous))
+        await push_context(service, context)
+        assert [(r.id, r.name) for r in sent(first)] == [("call-1", "list_items")]
+        service._session_resumption_handle = "test-resumption-handle"
+    
+        for call_id in ("call-2", "call-3"):
+            session = AsyncMock()
+    
+            async def connect(session_resumption_handle=None):
+                await service._handle_session_ready(session)
+    
+            service._connect = connect
+            await service._reconnect()
+            service._tool_call_id_to_name[call_id] = "list_items"
+            context.add_messages(result_messages(call_id, asynchronous=asynchronous))
+            await push_context(service, context)
+            await push_context(service, context)
+>           assert [(r.id, r.name) for r in sent(session)] == [(call_id, "list_items")]
+E           AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+E             
+E             At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+E             Left contains one more item: ('call-2', 'list_items')
+E             
+E             Full diff:
+E               [
+E             +     (
+E             +         'call-1',
+E             +         'tool_call_result',
+E             +     ),
+E                   (
+E                       'call-2',
+E                       'list_items',
+E                   ),
+E               ]
+
+tests/test_gemini_live_tool_resumption.py:84: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-10-22 12:53:02.680 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#0: 'list_items' registered with explicit cancel_on_interruption=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancel_on_interruption' id='4489592704'>.
+2026-10-22 12:53:02.681 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#0: 'list_items' registered with explicit cancellable_by_llm=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancellable_by_llm' id='4486328880'>.
+----------------------------- Captured stderr call -----------------------------
+2026-10-22 12:53:02.681 | DEBUG    | pipecat.services.llm_service:_compose_system_instruction:846 - GeminiLiveLLMService#0: System instruction composed: ASYNC TOOLS:
+Some of your tools keep running after you have replied. Their results arrive later as messages in the conversation, on whatever turn happens to be in progress by then.
+
+A result that has arrived is owed to the user, whatever the conversation has moved on to. If the user has said something you have not answered yet, answer that first, then add the result at the end of that same reply — never before your answer. If you have already answered everything the user said, deliver just the result — do not repeat or rephrase your earlier reply. State a short result outright; for a long one, say what came back and offer the details. Say it once, and do not repeat it in later replies.
+2026-10-22 12:53:02.682 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-1, tool_result_message={'items': [7]}
+2026-10-22 12:53:02.683 | INFO     | pipecat.services.google.gemini_live.llm:_disconnect:1785 - Disconnecting from Gemini service
+2026-10-22 12:53:02.683 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-1, tool_result_message={'items': [7]}
+2026-10-22 12:53:02.683 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-2, tool_result_message={'items': [7]}
+______________ test_settled_results_not_replayed_on_resume[True] _______________
+
+service = <pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10b9e3f50>
+asynchronous = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("asynchronous", [False, True])
+    async def test_settled_results_not_replayed_on_resume(service, asynchronous):
+        context = service._context
+        first = service._session
+        service._tool_call_id_to_name["call-1"] = "list_items"
+        context.add_messages(result_messages("call-1", asynchronous=asynchronous))
+        await push_context(service, context)
+        assert [(r.id, r.name) for r in sent(first)] == [("call-1", "list_items")]
+        service._session_resumption_handle = "test-resumption-handle"
+    
+        for call_id in ("call-2", "call-3"):
+            session = AsyncMock()
+    
+            async def connect(session_resumption_handle=None):
+                await service._handle_session_ready(session)
+    
+            service._connect = connect
+            await service._reconnect()
+            service._tool_call_id_to_name[call_id] = "list_items"
+            context.add_messages(result_messages(call_id, asynchronous=asynchronous))
+            await push_context(service, context)
+            await push_context(service, context)
+>           assert [(r.id, r.name) for r in sent(session)] == [(call_id, "list_items")]
+E           AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+E             
+E             At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+E             Left contains one more item: ('call-2', 'list_items')
+E             
+E             Full diff:
+E               [
+E             +     (
+E             +         'call-1',
+E             +         'tool_call_result',
+E             +     ),
+E                   (
+E                       'call-2',
+E                       'list_items',
+E                   ),
+E               ]
+
+tests/test_gemini_live_tool_resumption.py:84: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-10-22 12:53:02.752 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#1: 'list_items' registered with explicit cancel_on_interruption=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancel_on_interruption' id='4490107776'>.
+2026-10-22 12:53:02.752 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#1: 'list_items' registered with explicit cancellable_by_llm=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancellable_by_llm' id='4489582768'>.
+----------------------------- Captured stderr call -----------------------------
+2026-10-22 12:53:02.753 | DEBUG    | pipecat.services.llm_service:_compose_system_instruction:846 - GeminiLiveLLMService#1: System instruction composed: ASYNC TOOLS:
+Some of your tools keep running after you have replied. Their results arrive later as messages in the conversation, on whatever turn happens to be in progress by then.
+
+A result that has arrived is owed to the user, whatever the conversation has moved on to. If the user has said something you have not answered yet, answer that first, then add the result at the end of that same reply — never before your answer. If you have already answered everything the user said, deliver just the result — do not repeat or rephrase your earlier reply. State a short result outright; for a long one, say what came back and offer the details. Say it once, and do not repeat it in later replies.
+2026-10-22 12:53:02.753 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-1, tool_result_message={'items': [7]}
+2026-10-22 12:53:02.753 | INFO     | pipecat.services.google.gemini_live.llm:_disconnect:1785 - Disconnecting from Gemini service
+2026-10-22 12:53:02.753 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-1, tool_result_message={'items': [7]}
+2026-10-22 12:53:02.754 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=call-2, tool_result_message={'items': [7]}
+__________ test_pending_async_result_keeps_name_and_scheduling[False] __________
+
+service = <pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10ba57a10>
+finish_before_ready = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("finish_before_ready", [False, True])
+    async def test_pending_async_result_keeps_name_and_scheduling(service, finish_before_ready):
+        context = service._context
+        service._tool_call_id_to_name["pending"] = "list_items"
+        service._session_resumption_handle = "test-resumption-handle"
+        session = AsyncMock()
+    
+        async def connect(session_resumption_handle=None):
+            if finish_before_ready:
+                context.add_messages(result_messages("pending", asynchronous=True))
+            await service._handle_session_ready(session)
+    
+        service._connect = connect
+        await service._reconnect()
+        if not finish_before_ready:
+            context.add_messages(result_messages("pending", asynchronous=True))
+        await push_context(service, context)
+        await push_context(service, context)
+        responses = sent(session)
+        assert len(responses) == 1
+        response = responses[0]
+>       assert (response.id, response.name) == ("pending", "list_items")
+E       AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+E         
+E         At index 1 diff: 'tool_call_result' != 'list_items'
+E         
+E         Full diff:
+E           (
+E               'pending',
+E         -     'list_items',
+E         +     'tool_call_result',
+E           )
+
+tests/test_gemini_live_tool_resumption.py:109: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-10-22 12:53:02.792 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#2: 'list_items' registered with explicit cancel_on_interruption=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancel_on_interruption' id='4490362560'>.
+2026-10-22 12:53:02.792 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#2: 'list_items' registered with explicit cancellable_by_llm=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancellable_by_llm' id='4490456352'>.
+----------------------------- Captured stderr call -----------------------------
+2026-10-22 12:53:02.793 | INFO     | pipecat.services.google.gemini_live.llm:_disconnect:1785 - Disconnecting from Gemini service
+2026-10-22 12:53:02.793 | DEBUG    | pipecat.services.llm_service:_compose_system_instruction:846 - GeminiLiveLLMService#2: System instruction composed: ASYNC TOOLS:
+Some of your tools keep running after you have replied. Their results arrive later as messages in the conversation, on whatever turn happens to be in progress by then.
+
+A result that has arrived is owed to the user, whatever the conversation has moved on to. If the user has said something you have not answered yet, answer that first, then add the result at the end of that same reply — never before your answer. If you have already answered everything the user said, deliver just the result — do not repeat or rephrase your earlier reply. State a short result outright; for a long one, say what came back and offer the details. Say it once, and do not repeat it in later replies.
+2026-10-22 12:53:02.793 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=pending, tool_result_message={'items': [7]}
+__________ test_pending_async_result_keeps_name_and_scheduling[True] ___________
+
+service = <pipecat.services.google.gemini_live.llm.GeminiLiveLLMService object at 0x10ba92090>
+finish_before_ready = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("finish_before_ready", [False, True])
+    async def test_pending_async_result_keeps_name_and_scheduling(service, finish_before_ready):
+        context = service._context
+        service._tool_call_id_to_name["pending"] = "list_items"
+        service._session_resumption_handle = "test-resumption-handle"
+        session = AsyncMock()
+    
+        async def connect(session_resumption_handle=None):
+            if finish_before_ready:
+                context.add_messages(result_messages("pending", asynchronous=True))
+            await service._handle_session_ready(session)
+    
+        service._connect = connect
+        await service._reconnect()
+        if not finish_before_ready:
+            context.add_messages(result_messages("pending", asynchronous=True))
+        await push_context(service, context)
+        await push_context(service, context)
+        responses = sent(session)
+        assert len(responses) == 1
+        response = responses[0]
+>       assert (response.id, response.name) == ("pending", "list_items")
+E       AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+E         
+E         At index 1 diff: 'tool_call_result' != 'list_items'
+E         
+E         Full diff:
+E           (
+E               'pending',
+E         -     'list_items',
+E         +     'tool_call_result',
+E           )
+
+tests/test_gemini_live_tool_resumption.py:109: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+2026-10-22 12:53:02.831 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#3: 'list_items' registered with explicit cancel_on_interruption=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancel_on_interruption' id='4489583584'>.
+2026-10-22 12:53:02.833 | DEBUG    | pipecat.services.llm_service:_resolve_tool_option:1398 - GeminiLiveLLMService#3: 'list_items' registered with explicit cancellable_by_llm=False, overriding the decorator value <AsyncMock name='mock._pipecat_cancellable_by_llm' id='4490653968'>.
+----------------------------- Captured stderr call -----------------------------
+2026-10-22 12:53:02.834 | INFO     | pipecat.services.google.gemini_live.llm:_disconnect:1785 - Disconnecting from Gemini service
+2026-10-22 12:53:02.834 | DEBUG    | pipecat.services.llm_service:_compose_system_instruction:846 - GeminiLiveLLMService#3: System instruction composed: ASYNC TOOLS:
+Some of your tools keep running after you have replied. Their results arrive later as messages in the conversation, on whatever turn happens to be in progress by then.
+
+A result that has arrived is owed to the user, whatever the conversation has moved on to. If the user has said something you have not answered yet, answer that first, then add the result at the end of that same reply — never before your answer. If you have already answered everything the user said, deliver just the result — do not repeat or rephrase your earlier reply. State a short result outright; for a long one, say what came back and offer the details. Say it once, and do not repeat it in later replies.
+2026-10-22 12:53:02.834 | DEBUG    | pipecat.services.google.gemini_live.llm:_tool_result:2113 - Sending tool result to Gemini Live for tool_call_id=pending, tool_result_message={'items': [7]}
+- generated xml file: <workspace>/FAULTLINE/artifacts/pipecat-6301/before-valid.xml -
+=========================== short test summary info ============================
+FAILED tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[False] - AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+  
+  At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+  Left contains one more item: ('call-2', 'list_items')
+  
+  Full diff:
+    [
+  +     (
+  +         'call-1',
+  +         'tool_call_result',
+  +     ),
+        (
+            'call-2',
+            'list_items',
+        ),
+    ]
+FAILED tests/test_gemini_live_tool_resumption.py::test_settled_results_not_replayed_on_resume[True] - AssertionError: assert [('call-1', 'tool_call_result'), ('call-2', 'list_items')] == [('call-2', 'list_items')]
+  
+  At index 0 diff: ('call-1', 'tool_call_result') != ('call-2', 'list_items')
+  Left contains one more item: ('call-2', 'list_items')
+  
+  Full diff:
+    [
+  +     (
+  +         'call-1',
+  +         'tool_call_result',
+  +     ),
+        (
+            'call-2',
+            'list_items',
+        ),
+    ]
+FAILED tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[False] - AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+  
+  At index 1 diff: 'tool_call_result' != 'list_items'
+  
+  Full diff:
+    (
+        'pending',
+  -     'list_items',
+  +     'tool_call_result',
+    )
+FAILED tests/test_gemini_live_tool_resumption.py::test_pending_async_result_keeps_name_and_scheduling[True] - AssertionError: assert ('pending', 'tool_call_result') == ('pending', 'list_items')
+  
+  At index 1 diff: 'tool_call_result' != 'list_items'
+  
+  Full diff:
+    (
+        'pending',
+  -     'list_items',
+  +     'tool_call_result',
+    )
+========================= 4 failed, 2 passed in 0.71s ==========================

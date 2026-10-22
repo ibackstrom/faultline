@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pipecat tool resumption — local verification</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f4ef;color:#192532;font:17px/1.6 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:48px 24px}h1{font-size:clamp(2rem,6vw,3rem);line-height:1.12;letter-spacing:-.04em}h2{font-size:1.25rem}a{color:#134db5}section,details{background:white;border:1px solid #d9dfe5;border-radius:12px;padding:20px;margin:18px 0}summary{cursor:pointer;font-weight:650}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}code{overflow-wrap:anywhere}.label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#485966}.result{font-size:1.4rem;font-weight:700}.limit{border-left:4px solid #bf7b18;padding-left:16px}li{margin:8px 0}
+</style></head><body><main>
+<p class="label">FAULTLINE · 22 October 2026 · local evidence</p>
+<h1>Keep tool results correct across reconnects.</h1>
+<p>Independent reproduction and proposed fix for <a href="https://github.com/pipecat-ai/pipecat/issues/6301">Pipecat #6301</a>. Credit for the original bug and reproduction belongs to the issue reporter.</p>
+<section><div class="result">Before: 4 failed / 2 passed.<br>After: all 6 passed.</div><p>Broader Gemini Live suite: 57 passed, 5 skipped, 21 warnings. No model or provider calls. Not the entire Pipecat test suite.</p></section>
+<h2>What changes for developers?</h2>
+<p>A resumed connection should not receive already-sent tool results again. Tools that are still running should retain their names and asynchronous scheduling. The proposed patch preserves this bookkeeping on resumed reconnects, while ordinary shutdown and fresh reconnects still clear it.</p>
+<details open><summary>Failing trial: old result replayed after resume</summary><p>The reporter's unchanged script produced these outgoing SDK messages:</p><pre>Before, connection 2:
+[('call-1', 'tool_call_result'), ('call-2', 'list_items')]
+
+After, connection 2:
+[('call-2', 'list_items')]</pre><p><a href="reporter-before.txt">Raw before log</a> · <a href="reporter-after.txt">Raw after log</a></p></details>
+<details><summary>Six cases and controls</summary><ol><li>Settled regular tool result: no replay across two resumed reconnects.</li><li>Settled async final: no replay across two resumed reconnects.</li><li>Async result finishing after readiness: correct name, WHEN_IDLE, will_continue=false.</li><li>Result added during reconnect, pushed after readiness: delivered once, not swallowed.</li><li>Reconnect without a handle: history seeded, bookkeeping reset.</li><li>Ordinary disconnect with a handle: bookkeeping reset.</li></ol><p>Repeated context pushes must not duplicate newly delivered results.</p><p><a href="base-final.txt">Base assertions</a> · <a href="patched-final.txt">Patched suite</a> · <a href="cases.json">Frozen cases</a></p></details>
+<h2>Evidence boundaries</h2><p class="limit">Real Pipecat service, mocked SDK session and connection establishment. This is not a live Gemini, voice-call, or end-to-end deployment test. No claim about provider behavior on duplicates, failed sends, rejected handles, or context frames processed while disconnected.</p>
+<p>Selected deterministic cases are not model accuracy estimates or customer success rates. The first preliminary run had a misspelled test helper; its errors are excluded from the final result and preserved in the evidence.</p>
+<h2>Review or rerun</h2><p><a href="README.md">Method and rerun commands</a> · <a href="fix.patch">Proposed patch</a> · <a href="test_gemini_live_tool_resumption.py">Regression tests</a> · <a href="environment.txt">Environment</a> · <a href="manifest.json">Manifest</a></p>
+<p><a href="https://github.com/pipecat-ai/pipecat/issues/6301#issuecomment-6339049122">Patch and tests posted in the original issue</a>. Not merged or deployed. <a href="../index.html">Back to FAULTLINE</a>.</p>
+</main></body></html>

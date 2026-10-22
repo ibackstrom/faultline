@@ -5,6 +5,16 @@ Independent AI-agent failure reproduction and patch verification.
 [Website](https://ibackstrom.github.io/faultline/) ·
 [About](https://ibackstrom.github.io/faultline/about.html)
 
+## Keeping tool results correct across reconnects
+
+[Pipecat #6301 report](https://ibackstrom.github.io/faultline/pipecat-6301/report.html):
+independent reproduction, proposed resumption-bookkeeping patch and
+[runnable tests](pipecat-6301/README.md). Six local checks: base 4 failed / 2
+passed, patched 6 passed. Real service with mocked SDK connections, not live
+Gemini or voice calls. Original discovery credited to the issue reporter.
+The patch and tests are posted upstream; not merged or deployed. Published
+logs redact absolute workspace paths; their checksums cover the public copies.
+
 ## The tool returned. The agent stayed silent.
 
 We independently replayed a reported Pipecat turn-taking failure using its
