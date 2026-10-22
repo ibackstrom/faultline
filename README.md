@@ -5,6 +5,20 @@ Independent AI-agent failure reproduction and patch verification.
 [Website](https://ibackstrom.github.io/faultline/) ·
 [About](https://ibackstrom.github.io/faultline/about.html)
 
+## Service pages
+
+The homepage and [Search landing](ai-agent-testing.html) cover independent
+AI agent testing for tools, chat, workflows and voice. About remains in the
+top navigation. Both use `campaign-styles.css`, `landing.js` and the two
+`assets/inspection-*.jpg` images. The images are AI-generated metaphors, not
+test evidence. About and existing case pages retain their original stylesheet.
+
+Contact details appear only after a click. This deters simple HTML scrapers,
+not bots that execute JavaScript. Only the dedicated ad landing pre-fills
+the `FLSEARCH01` email marker; the homepage does not label organic inquiries
+as ad leads. No campaign, tracking tag or contact-form backend is installed.
+The private campaign workbook and lead log are not in this public repository.
+
 ## Keeping tool results correct across reconnects
 
 [Pipecat #6301 report](https://ibackstrom.github.io/faultline/pipecat-6301/report.html):
@@ -32,7 +46,8 @@ or patch. These selected checks are not production reliability estimates.
 
 ## Typography
 
-The site serves Manrope locally, with system sans-serif fallbacks and
+About and existing case pages serve Manrope locally. The simplified service
+pages use system sans-serif. Manrope has system sans-serif fallbacks and
 `font-display: swap`. The Latin variable WOFF2 (weights 200–800, 24 KiB) is
 an unmodified Google Fonts asset from
 https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSvfedN4.woff2.

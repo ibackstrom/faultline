@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Independent AI agent testing for tools, chat, workflows and voice. Bring one task. Get the results and tests your team can rerun.">
+<link rel="icon" href="icon.svg"><link rel="stylesheet" href="campaign-styles.css"><title>AI Agent Testing Service | FAULTLINE</title>
+<link rel="canonical" href="https://ibackstrom.github.io/faultline/">
+</head>
+<body class="landing" data-campaign="FLSEARCH01">
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap top"><a class="brand" href="index.html">FAULTLINE.</a><nav aria-label="Main navigation"><a href="#work">Our work</a><a href="about.html">About</a><a href="#contact">Talk to Igor</a></nav></header>
+<main class="wrap" id="main">
+<section class="hero hero-split">
+<div><p class="service-title">Independent AI agent testing</p><h1>Bring one failure.<br>Keep the test.</h1>
+<p class="intro">We test the tools, answers and actions your agent uses to complete a task. Chat, workflows and voice.</p>
+<p>Before a release or client handover, know what passed, what failed and what your team should check next.</p>
+<div class="cta-row"><a class="button" href="#contact">Tell us what needs testing</a><a href="#evidence">See a real example</a></div>
+<p class="small">One workflow pilot · €1,500 before applicable taxes</p></div>
+<figure><picture><source media="(max-width:700px)" srcset="assets/inspection-landscape.jpg" width="1200" height="628"><img src="assets/inspection-square.jpg" width="1200" height="1200" alt="A magnifying glass reveals a crack in a blue ceramic block"></picture><figcaption>AI-generated visual metaphor. Not a test result.</figcaption></figure>
+</section>
+<section class="section" id="process"><h2>One task. Clear results. Tests you keep.</h2>
+<div class="grid thirds">
+<article><h3>Tell us what should happen</h3><p>A wrong tool call, an unfinished task or a missed voice reply. Or a change you need checked before release.</p></article>
+<article><h3>We run agreed checks</h3><p>Record the actions and outputs. Compare a proposed fix using the same inputs and normal-use checks.</p></article>
+<article><h3>Your team gets the evidence</h3><p>Findings, runnable checks and a regression test if the failure reproduces. If it doesn't, we document that too.</p></article>
+</div>
+<p class="small offer-line">€1,500 before tax · Up to 15 engineering hours over five working days once access is ready. Scope and model-call budget agreed first. Fix implementation is separate; reproduction and a successful fix aren't guaranteed.</p>
+</section>
+<section class="section" id="work"><p class="eyebrow" id="evidence">Public example / voice-agent pipeline</p><div class="grid">
+<div><h2>A reconnect sent the same result twice.</h2><p>We reproduced a reported Pipecat bug, prepared a patch and posted the tests upstream. The original discovery belongs to the reporter.</p><a href="pipecat-6301/report.html">Read the patch, tests and limits</a></div>
+<div class="card"><p class="number">4 failing → 0 failing</p><p>Six selected checks. Two passed before; all six passed after the proposed patch.</p><p class="small">Local tests with mocked provider connections, not live calls. Not an upstream release, customer testimonial or reliability estimate for other agents.</p></div></div></section>
+<section class="section" id="contact"><div class="landing-contact"><p class="eyebrow">Talk to Igor</p><h2>What should your agent do?</h2><p>Tell me your stack, the task and what needs checking. A few lines are enough to discuss scope. No credentials, private logs or customer data.</p>
+<button type="button" id="show-email" aria-expanded="false" aria-controls="email-options" hidden>Show email options</button>
+<noscript><p>Enable JavaScript to reveal the email contact. Nothing is sent from this page.</p></noscript>
+<div id="email-options" hidden>
+<p id="email-address"></p>
+<div class="cta-row"><a id="email-cta" class="button">Open email draft</a><button type="button" class="secondary" id="copy-email">Copy address</button></div>
+<p class="muted small">Use your mail app or copy the address. Nothing is sent until you press Send. Include FLSEARCH01 in the subject if you came from the ad.</p>
+</div><p id="copy-status" role="status" aria-live="polite"></p></div></section>
+<section class="section" id="questions"><h2>Two things to know</h2>
+<details><summary>What access do you need?</summary><p>We agree on a synthetic example, a minimal test environment or a run by your engineer. Production access isn't needed to start.</p></details>
+<details><summary>What isn't included?</summary><p>Security audits, certification, training and production changes. Passing checks don't guarantee whole-system reliability. FAULTLINE is independent; framework examples aren't endorsements.</p></details>
+</section>
+</main>
+<footer class="wrap small"><p>Igor · Prague, Czech Republic · <a href="about.html">About FAULTLINE</a> · <a href="pipecat-silence.html">More testing work</a></p><p>No analytics or cookies added by this page. Inquiries use your email provider and are used to reply and discuss scope. Hosting-provider processing is separate. <a href="#contact">Contact Igor</a> with privacy questions.</p></footer>
+<script src="landing.js"></script>
+</body></html>
